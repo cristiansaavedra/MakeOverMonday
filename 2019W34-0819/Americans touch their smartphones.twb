@@ -1,0 +1,2263 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20183.19.0123.2221                               -->
+<workbook original-version='18.1' source-build='2018.3.3 (20183.19.0123.2221)' source-platform='win' version='18.1' xml:base='https://public.tableau.com' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <SortTagCleanup />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <repository-location id='Americanstouchtheirsmartphones_15662392183810' path='/workbooks' revision='1.5' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='makeovermonday/2019w34' inline='true' name='federated.0538lta1o7oh9g15zxdyi1ehvvw4' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='makeovermonday/2019w34' name='webdata-direct.0e7vzfl16f1b3110u2da10nnebzb'>
+            <connection APIVersion='' authType='custom' authentication='yes' channel='https' class='webdata-direct' connectionData='{&quot;dataset&quot;:&quot;makeovermonday/2019w34&quot;,&quot;query&quot;:&quot;SELECT *\nFROM cellphone_use&quot;,&quot;queryType&quot;:&quot;sql&quot;,&quot;version&quot;:&quot;1.1.0&quot;}' connectionName='makeovermonday/2019w34' filename='' increment-key='' path='/' port='443' scriptVersion='' secondary_whitelist='' server='tableau.data.world' urlQuery='state=f4938580-c27d-11e9-bfd9-11fc95606457' username='' usernameAlias='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='webdata-direct.0e7vzfl16f1b3110u2da10nnebzb' name='Query Results' table='[QueryTable]' type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>question</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[question]</local-name>
+            <parent-name>[Query Results]</parent-name>
+            <remote-alias />
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;string&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>respondent</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[respondent]</local-name>
+            <parent-name>[Query Results]</parent-name>
+            <remote-alias />
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;string&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>response</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[response]</local-name>
+            <parent-name>[Query Results]</parent-name>
+            <remote-alias />
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;float&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>frequency</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[frequency]</local-name>
+            <parent-name>[Query Results]</parent-name>
+            <remote-alias />
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;string&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Measure Names' datatype='string' name='[:Measure Names]' role='dimension' type='nominal' />
+      <column aggregation='Avg' caption='Times' datatype='integer' name='[Calculation_913386323719884801]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='2617' />
+      </column>
+      <column caption='Teens' datatype='real' default-format='p0%' name='[Calculation_913386323730268164]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [respondent] = &quot;Teens&quot; THEN [response] END' />
+      </column>
+      <column caption='Diff' datatype='real' default-format='p0%' name='[Calculation_913386323731750922]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='(sum([Teens (copy)])-sum([Calculation_913386323730268164]))' />
+      </column>
+      <column caption='Color' datatype='string' name='[Calculation_913386323732602891]' role='measure' type='nominal'>
+        <calculation class='tableau' formula='if [Calculation_913386323731750922] &gt;= 0 THEN &quot;Parents&quot; ELSE &quot;Teens&quot; END' />
+      </column>
+      <column aggregation='Avg' caption='Question Number' datatype='integer' default-format='n#,##0;-#,##0' name='[Calculation_913386323761242131]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='case [question]&#13;&#10;WHEN &quot;% of US teens/parents who say they spend too much time on their cellphone&quot; THEN 1&#13;&#10;WHEN &quot;% of US teens/parents who say they check phone for messages as soon as they wake up&quot; THEN 2&#13;&#10;WHEN &quot;% of US teens/parents who say they feel their parent/teen is distracted by their phone when having in-person conversations&quot; THEN 3&#13;&#10;WHEN &quot;% of US teens/parents who say they lose focus in class/work because they are checking cellphone&quot; THEN 4&#13;&#10;END' />
+      </column>
+      <column caption='Measure Values' datatype='real' name='[Multiple Values]' role='measure' type='quantitative' />
+      <column caption='Number of Records' datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Parents' datatype='real' default-format='p0%' name='[Teens (copy)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [respondent] = &quot;Parents&quot; THEN [response] END' />
+      </column>
+      <column caption='Frequency' datatype='string' name='[frequency]' role='dimension' type='nominal' />
+      <column caption='Question' datatype='string' name='[question]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;\% of US teens/parents who say they check phone for messages as soon as they wake up&quot;' value='Check phone for messages as soon as they wake up' />
+          <alias key='&quot;\% of US teens/parents who say they feel their parent/teen is distracted by their phone when having in-person conversations&quot;' value='Feel their parent/teen is distracted by their phone when having in-person conversations' />
+          <alias key='&quot;\% of US teens/parents who say they lose focus in class/work because they are checking cellphone&quot;' value='Lose focus in class/work because they are checking cellphone' />
+          <alias key='&quot;\% of US teens/parents who say they spend too much time on their cellphone&quot;' value='Spend too much time on their cellphone' />
+        </aliases>
+      </column>
+      <column caption='Respondent' datatype='string' name='[respondent]' role='dimension' type='nominal' />
+      <column caption='Response' datatype='real' default-format='p0%' name='[response]' role='measure' type='quantitative' />
+      <column-instance column='[Calculation_913386323732602891]' derivation='User' name='[usr:Calculation_913386323732602891:nk]' pivot='key' type='nominal' />
+      <group caption='Action (Question)' hidden='true' name='[Action (Question)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[question]' />
+        </groupfilter>
+      </group>
+      <extract count='-1' enabled='true' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='C:/Users/csaavedra/Documents/My Tableau Repository/Datasources/federated.0538lta1o7oh9g15zxdyi1ehvvw4_1cztyez0wtkfg3149yu7n06aj25m.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='08/19/2019 02:39:50 PM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <refresh>
+            <refresh-event add-from-file-path='' increment-value='%null%' refresh-type='create' rows-inserted='14' timestamp-start='2019-08-19 14:39:50.642' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>question</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[question]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>question</remote-alias>
+              <ordinal>0</ordinal>
+              <family>Query Results</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LROOT' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>respondent</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[respondent]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>respondent</remote-alias>
+              <ordinal>1</ordinal>
+              <family>Query Results</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LROOT' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>response</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[response]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>response</remote-alias>
+              <ordinal>2</ordinal>
+              <family>Query Results</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>14</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>frequency</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[frequency]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>frequency</remote-alias>
+              <ordinal>3</ordinal>
+              <family>Query Results</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LROOT' />
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' dim-percentage='0.433796' measure-ordering='alphabetic' measure-percentage='0.566204' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[usr:Calculation_913386323732602891:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;Parents&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Positive&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Negative&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Teens&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <actions>
+    <action caption='General' name='[Action1]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='MOM-W34' type='sheet' worksheet='Questions' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='MOM-W34' />
+      </command>
+    </action>
+    <action caption='Make Over Monday' name='[Action2]'>
+      <source dashboard='MOM-W34' type='sheet' worksheet='URL' />
+      <link caption='' expression='https://data.world/makeovermonday/2019w34' />
+    </action>
+  </actions>
+  <worksheets>
+    <worksheet name='Boths'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontname='Tableau Bold'>Summary</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='makeovermonday/2019w34' name='federated.0538lta1o7oh9g15zxdyi1ehvvw4' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0538lta1o7oh9g15zxdyi1ehvvw4'>
+            <column caption='Teens' datatype='real' default-format='p0%' name='[Calculation_913386323730268164]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [respondent] = &quot;Teens&quot; THEN [response] END' />
+            </column>
+            <column caption='-SUM([Teens])' datatype='real' name='[Calculation_913386323730665477]' role='measure' type='quantitative' user:unnamed='Teens'>
+              <calculation class='tableau' formula='-SUM([Calculation_913386323730268164])' />
+            </column>
+            <column caption='Diff' datatype='real' default-format='p0%' name='[Calculation_913386323731750922]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='(sum([Teens (copy)])-sum([Calculation_913386323730268164]))' />
+            </column>
+            <column caption='Color' datatype='string' name='[Calculation_913386323732602891]' role='measure' type='nominal'>
+              <calculation class='tableau' formula='if [Calculation_913386323731750922] &gt;= 0 THEN &quot;Parents&quot; ELSE &quot;Teens&quot; END' />
+            </column>
+            <column caption='ABS([Diff])' datatype='real' name='[Calculation_913386323735203852]' role='measure' type='quantitative' user:unnamed='Boths'>
+              <calculation class='tableau' formula='ABS([Calculation_913386323731750922])' />
+            </column>
+            <column aggregation='Avg' caption='Question Number' datatype='integer' default-format='n#,##0;-#,##0' name='[Calculation_913386323761242131]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='case [question]&#13;&#10;WHEN &quot;% of US teens/parents who say they spend too much time on their cellphone&quot; THEN 1&#13;&#10;WHEN &quot;% of US teens/parents who say they check phone for messages as soon as they wake up&quot; THEN 2&#13;&#10;WHEN &quot;% of US teens/parents who say they feel their parent/teen is distracted by their phone when having in-person conversations&quot; THEN 3&#13;&#10;WHEN &quot;% of US teens/parents who say they lose focus in class/work because they are checking cellphone&quot; THEN 4&#13;&#10;END' />
+            </column>
+            <column caption='AVG(0)' datatype='real' name='[Calculation_913386323762901012]' role='measure' type='quantitative' user:unnamed='Boths'>
+              <calculation class='tableau' formula='AVG(0)' />
+            </column>
+            <column caption='Parents' datatype='real' default-format='p0%' name='[Teens (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [respondent] = &quot;Parents&quot; THEN [response] END' />
+            </column>
+            <column-instance column='[Calculation_913386323761242131]' derivation='Avg' name='[avg:Calculation_913386323761242131:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[question]' derivation='None' name='[none:question:nk]' pivot='key' type='nominal' />
+            <column caption='Question' datatype='string' name='[question]' role='dimension' type='nominal'>
+              <aliases>
+                <alias key='&quot;\% of US teens/parents who say they check phone for messages as soon as they wake up&quot;' value='Check phone for messages as soon as they wake up' />
+                <alias key='&quot;\% of US teens/parents who say they feel their parent/teen is distracted by their phone when having in-person conversations&quot;' value='Feel their parent/teen is distracted by their phone when having in-person conversations' />
+                <alias key='&quot;\% of US teens/parents who say they lose focus in class/work because they are checking cellphone&quot;' value='Lose focus in class/work because they are checking cellphone' />
+                <alias key='&quot;\% of US teens/parents who say they spend too much time on their cellphone&quot;' value='Spend too much time on their cellphone' />
+              </aliases>
+            </column>
+            <column caption='Respondent' datatype='string' name='[respondent]' role='dimension' type='nominal' />
+            <column caption='Response' datatype='real' default-format='p0%' name='[response]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_913386323730268164]' derivation='Sum' name='[sum:Calculation_913386323730268164:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Teens (copy)]' derivation='Sum' name='[sum:Teens (copy):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_913386323730665477]' derivation='User' name='[usr:Calculation_913386323730665477:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_913386323731750922]' derivation='User' name='[usr:Calculation_913386323731750922:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_913386323732602891]' derivation='User' name='[usr:Calculation_913386323732602891:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_913386323735203852]' derivation='User' name='[usr:Calculation_913386323735203852:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_913386323762901012]' derivation='User' name='[usr:Calculation_913386323762901012:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[Action (Question)]'>
+            <groupfilter function='level-members' level='[question]' user:ui-action-filter='[Action1]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <manual-sort column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;\% of US teens/parents who say they spend too much time on their cellphone&quot;</bucket>
+              <bucket>&quot;\% of US teens/parents who say they check phone for messages as soon as they wake up&quot;</bucket>
+              <bucket>&quot;\% of US teens/parents who say they feel their parent/teen is distracted by their phone when having in-person conversations&quot;</bucket>
+              <bucket>&quot;\% of US teens/parents who say they lose focus in class/work because they are checking cellphone&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <slices>
+            <column>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[Action (Question)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323730665477:qk]' scope='cols' value='false' />
+            <format attr='display' class='0' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]' scope='cols' value='false' />
+            <encoding attr='space' class='0' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk]' field-type='quantitative' max='0.29999999999999999' min='-0.29999999999999999' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='1' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk]' field-type='quantitative' fold='true' max='1.0' min='-1.0' range-type='fixed' scope='cols' synchronized='true' type='space' />
+            <format attr='display' class='0' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk]' scope='cols' value='false' />
+            <format attr='display' class='1' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk]' scope='cols' value='false' />
+            <format attr='display' class='0' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323762901012:qk]' scope='cols' value='false' />
+            <format attr='line-visibility' value='off' />
+            <format attr='tick-color' value='#00000000' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323735203852:qk]' value='p0%' />
+            <format attr='font-size' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323735203852:qk]' value='8' />
+            <format attr='font-weight' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323735203852:qk]' value='bold' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='display' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]' value='false' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[avg:Calculation_913386323761242131:qk]' max='4.0' min='1.0' type='interpolated' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='show-null-value-warning' value='false' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='rows' value='false' />
+            <format attr='in-tooltip' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323730665477:qk]' value='false' />
+          </style-rule>
+          <style-rule element='caption'>
+            <format attr='background-color' value='#00000000' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='fill-above' id='refline0' value='#00000000' />
+            <format attr='fill-below' id='refline0' value='#00000000' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='line-visibility' value='off' />
+            <format attr='line-visibility' scope='cols' value='on' />
+            <format attr='line-pattern-only' scope='cols' value='dotted' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='line-visibility' scope='cols' value='off' />
+            <format attr='line-visibility' scope='rows' value='off' />
+          </style-rule>
+          <style-rule element='title'>
+            <format attr='background-color' value='#f5f5f5' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <customized-tooltip show-buttons='false'>
+              <formatted-text>
+                <run fontcolor='#787878'>Question:&#9;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Teens:&#9;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Calculation_913386323730268164:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Parents:&#9;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Diff:&#9;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Color:&#9;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323732602891:nk]&gt;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+                <format attr='mark-color' value='#f28e2b' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323730665477:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <lod column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]' />
+              <text column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Calculation_913386323730268164:qk]' />
+            </encodings>
+            <customized-tooltip show-buttons='false'>
+              <formatted-text>
+                <run bold='true' fontname='Tableau Bold' fontsize='12'>Teens</run>
+                <run>Æ&#10;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]&gt;</run>
+                <run>Æ&#10;&#10;</run>
+                <run fontcolor='#787878'>Teens:&#9;&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Calculation_913386323730268164:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Parents: &#9;&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]&gt;</run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-color' value='#f28e2b' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <lod column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Calculation_913386323730268164:qk]' />
+              <text column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]' />
+            </encodings>
+            <customized-tooltip show-buttons='false'>
+              <formatted-text>
+                <run bold='true' fontname='Tableau Bold' fontsize='12'>Parents</run>
+                <run>Æ&#10;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]&gt;</run>
+                <run>Æ&#10;&#10;</run>
+                <run fontcolor='#787878'>Teens:&#9;&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Calculation_913386323730268164:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Parents:&#9;&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]&gt;</run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-color' value='#0074aa' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323732602891:nk]' />
+            </encodings>
+            <customized-tooltip show-buttons='false'>
+              <formatted-text />
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='size' value='0.10895027965307236' />
+                <format attr='mark-labels-show' value='false' />
+                <format attr='mark-color' value='#f28e2b' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='4' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk]' x-index='1'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <text column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323735203852:qk]' />
+            </encodings>
+            <customized-tooltip show-buttons='false'>
+              <formatted-text />
+            </customized-tooltip>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='size' value='2.8618783950805664' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-color' value='#bab0ac' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='5' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323762901012:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[avg:Calculation_913386323761242131:qk]' />
+              <text column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[avg:Calculation_913386323761242131:qk]' />
+            </encodings>
+            <customized-tooltip show-buttons='false'>
+              <formatted-text />
+            </customized-tooltip>
+            <customized-label>
+              <formatted-text>
+                <run bold='true'>&lt;</run>
+                <run bold='true'>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[avg:Calculation_913386323761242131:qk]</run>
+                <run bold='true'>&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='size' value='2.7734806537628174' />
+                <format attr='mark-color' value='#f28e2b' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]</rows>
+        <cols>([federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323762901012:qk] + ([federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323730665477:qk] + ([federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk] + ([federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk] + [federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]))))</cols>
+      </table>
+    </worksheet>
+    <worksheet name='Often'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontname='Tableau Bold'>Often</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='makeovermonday/2019w34' name='federated.0538lta1o7oh9g15zxdyi1ehvvw4' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0538lta1o7oh9g15zxdyi1ehvvw4'>
+            <column caption='Teens' datatype='real' default-format='p0%' name='[Calculation_913386323730268164]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [respondent] = &quot;Teens&quot; THEN [response] END' />
+            </column>
+            <column caption='-SUM([Teens])' datatype='real' name='[Calculation_913386323730665477]' role='measure' type='quantitative' user:unnamed='Teens'>
+              <calculation class='tableau' formula='-SUM([Calculation_913386323730268164])' />
+            </column>
+            <column caption='Diff' datatype='real' default-format='p0%' name='[Calculation_913386323731750922]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='(sum([Teens (copy)])-sum([Calculation_913386323730268164]))' />
+            </column>
+            <column caption='Color' datatype='string' name='[Calculation_913386323732602891]' role='measure' type='nominal'>
+              <calculation class='tableau' formula='if [Calculation_913386323731750922] &gt;= 0 THEN &quot;Parents&quot; ELSE &quot;Teens&quot; END' />
+            </column>
+            <column caption='ABS([Diff])' datatype='real' name='[Calculation_913386323735203852]' role='measure' type='quantitative' user:unnamed='Boths'>
+              <calculation class='tableau' formula='ABS([Calculation_913386323731750922])' />
+            </column>
+            <column aggregation='Avg' caption='Question Number' datatype='integer' default-format='n#,##0;-#,##0' name='[Calculation_913386323761242131]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='case [question]&#13;&#10;WHEN &quot;% of US teens/parents who say they spend too much time on their cellphone&quot; THEN 1&#13;&#10;WHEN &quot;% of US teens/parents who say they check phone for messages as soon as they wake up&quot; THEN 2&#13;&#10;WHEN &quot;% of US teens/parents who say they feel their parent/teen is distracted by their phone when having in-person conversations&quot; THEN 3&#13;&#10;WHEN &quot;% of US teens/parents who say they lose focus in class/work because they are checking cellphone&quot; THEN 4&#13;&#10;END' />
+            </column>
+            <column caption='AVG(0)' datatype='real' name='[Calculation_913386323764047894]' role='measure' type='quantitative' user:unnamed='Often'>
+              <calculation class='tableau' formula='AVG(0)' />
+            </column>
+            <column caption='Parents' datatype='real' default-format='p0%' name='[Teens (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [respondent] = &quot;Parents&quot; THEN [response] END' />
+            </column>
+            <column-instance column='[Calculation_913386323761242131]' derivation='Avg' name='[avg:Calculation_913386323761242131:qk]' pivot='key' type='quantitative' />
+            <column caption='Frequency' datatype='string' name='[frequency]' role='dimension' type='nominal' />
+            <column-instance column='[frequency]' derivation='None' name='[none:frequency:nk]' pivot='key' type='nominal' />
+            <column-instance column='[question]' derivation='None' name='[none:question:nk]' pivot='key' type='nominal' />
+            <column caption='Question' datatype='string' name='[question]' role='dimension' type='nominal'>
+              <aliases>
+                <alias key='&quot;\% of US teens/parents who say they check phone for messages as soon as they wake up&quot;' value='Check phone for messages as soon as they wake up' />
+                <alias key='&quot;\% of US teens/parents who say they feel their parent/teen is distracted by their phone when having in-person conversations&quot;' value='Feel their parent/teen is distracted by their phone when having in-person conversations' />
+                <alias key='&quot;\% of US teens/parents who say they lose focus in class/work because they are checking cellphone&quot;' value='Lose focus in class/work because they are checking cellphone' />
+                <alias key='&quot;\% of US teens/parents who say they spend too much time on their cellphone&quot;' value='Spend too much time on their cellphone' />
+              </aliases>
+            </column>
+            <column caption='Respondent' datatype='string' name='[respondent]' role='dimension' type='nominal' />
+            <column caption='Response' datatype='real' default-format='p0%' name='[response]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_913386323730268164]' derivation='Sum' name='[sum:Calculation_913386323730268164:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Teens (copy)]' derivation='Sum' name='[sum:Teens (copy):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_913386323730665477]' derivation='User' name='[usr:Calculation_913386323730665477:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_913386323731750922]' derivation='User' name='[usr:Calculation_913386323731750922:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_913386323732602891]' derivation='User' name='[usr:Calculation_913386323732602891:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_913386323735203852]' derivation='User' name='[usr:Calculation_913386323735203852:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_913386323764047894]' derivation='User' name='[usr:Calculation_913386323764047894:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[Action (Question)]'>
+            <groupfilter function='level-members' level='[question]' user:ui-action-filter='[Action1]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:frequency:nk]'>
+            <groupfilter function='member' level='[none:frequency:nk]' member='&quot;Often&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <manual-sort column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;\% of US teens/parents who say they spend too much time on their cellphone&quot;</bucket>
+              <bucket>&quot;\% of US teens/parents who say they check phone for messages as soon as they wake up&quot;</bucket>
+              <bucket>&quot;\% of US teens/parents who say they feel their parent/teen is distracted by their phone when having in-person conversations&quot;</bucket>
+              <bucket>&quot;\% of US teens/parents who say they lose focus in class/work because they are checking cellphone&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <manual-sort column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323732602891:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;Teens&quot;</bucket>
+              <bucket>&quot;Parents&quot;</bucket>
+              <bucket>%all%</bucket>
+            </dictionary>
+          </manual-sort>
+          <slices>
+            <column>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:frequency:nk]</column>
+            <column>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[Action (Question)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323730665477:qk]' scope='cols' value='false' />
+            <format attr='display' class='0' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]' scope='cols' value='false' />
+            <encoding attr='space' class='0' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk]' field-type='quantitative' max='0.29999999999999999' min='-0.29999999999999999' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='1' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk]' field-type='quantitative' fold='true' max='0.29999999999999999' min='-0.29999999999999999' range-type='fixed' scope='cols' synchronized='true' type='space' />
+            <format attr='display' class='0' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk]' scope='cols' value='false' />
+            <format attr='display' class='1' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk]' scope='cols' value='false' />
+            <format attr='line-visibility' value='off' />
+            <format attr='tick-color' value='#00000000' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323735203852:qk]' value='p0%' />
+            <format attr='font-size' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323735203852:qk]' value='8' />
+            <format attr='font-weight' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323735203852:qk]' value='bold' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='display' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]' value='false' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[avg:Calculation_913386323761242131:qk]' max='4.0' min='1.0' type='interpolated' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='show-null-value-warning' value='false' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='rows' value='false' />
+            <format attr='in-tooltip' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323730665477:qk]' value='false' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='fill-above' id='refline0' value='#00000000' />
+            <format attr='fill-below' id='refline0' value='#00000000' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='line-visibility' value='off' />
+            <format attr='line-visibility' scope='cols' value='on' />
+            <format attr='line-pattern-only' scope='cols' value='dotted' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='line-visibility' scope='cols' value='off' />
+            <format attr='line-visibility' scope='rows' value='off' />
+          </style-rule>
+          <style-rule element='title'>
+            <format attr='background-color' value='#f5f5f5' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <customized-tooltip show-buttons='false'>
+              <formatted-text>
+                <run fontcolor='#787878'>Question:&#9;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Teens:&#9;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Calculation_913386323730268164:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Parents:&#9;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Diff:&#9;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Color:&#9;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323732602891:nk]&gt;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+                <format attr='mark-color' value='#f28e2b' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323730665477:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <lod column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]' />
+              <text column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Calculation_913386323730268164:qk]' />
+            </encodings>
+            <customized-tooltip show-buttons='false'>
+              <formatted-text>
+                <run bold='true' fontname='Tableau Bold' fontsize='12'>Teens</run>
+                <run>Æ&#10;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]&gt;</run>
+                <run>Æ&#10;&#10;</run>
+                <run fontcolor='#787878'>Teens:&#9;&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Calculation_913386323730268164:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Parents: &#9;&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]&gt;</run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-color' value='#f28e2b' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <lod column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Calculation_913386323730268164:qk]' />
+              <text column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]' />
+            </encodings>
+            <customized-tooltip show-buttons='false'>
+              <formatted-text>
+                <run bold='true' fontname='Tableau Bold' fontsize='12'>Parents</run>
+                <run>Æ&#10;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]&gt;</run>
+                <run>Æ&#10;&#10;</run>
+                <run fontcolor='#787878'>Teens:&#9;&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Calculation_913386323730268164:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Parents:&#9;&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]&gt;</run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-color' value='#0074aa' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323732602891:nk]' />
+            </encodings>
+            <customized-tooltip show-buttons='false'>
+              <formatted-text />
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='size' value='0.10895027965307236' />
+                <format attr='mark-labels-show' value='false' />
+                <format attr='mark-color' value='#f28e2b' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='4' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk]' x-index='1'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <text column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323735203852:qk]' />
+            </encodings>
+            <customized-tooltip show-buttons='false'>
+              <formatted-text />
+            </customized-tooltip>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='size' value='2.8618783950805664' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-color' value='#bab0ac' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='5' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323764047894:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[avg:Calculation_913386323761242131:qk]' />
+              <text column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[avg:Calculation_913386323761242131:qk]' />
+            </encodings>
+            <customized-tooltip show-buttons='false'>
+              <formatted-text />
+            </customized-tooltip>
+            <customized-label>
+              <formatted-text>
+                <run bold='true' fontname='Tableau Bold'>&lt;</run>
+                <run bold='true' fontname='Tableau Bold'>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[avg:Calculation_913386323761242131:qk]</run>
+                <run bold='true' fontname='Tableau Bold'>&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='size' value='2.9060773849487305' />
+                <format attr='mark-color' value='#f28e2b' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]</rows>
+        <cols>([federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323764047894:qk] + ([federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323730665477:qk] + ([federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk] + ([federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk] + [federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]))))</cols>
+      </table>
+    </worksheet>
+    <worksheet name='Questions'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontname='Tableau Bold' fontsize='11'>Percentage of US teens and parents who say they </run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='makeovermonday/2019w34' name='federated.0538lta1o7oh9g15zxdyi1ehvvw4' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0538lta1o7oh9g15zxdyi1ehvvw4'>
+            <column aggregation='Avg' caption='Question Number' datatype='integer' default-format='n#,##0;-#,##0' name='[Calculation_913386323761242131]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='case [question]&#13;&#10;WHEN &quot;% of US teens/parents who say they spend too much time on their cellphone&quot; THEN 1&#13;&#10;WHEN &quot;% of US teens/parents who say they check phone for messages as soon as they wake up&quot; THEN 2&#13;&#10;WHEN &quot;% of US teens/parents who say they feel their parent/teen is distracted by their phone when having in-person conversations&quot; THEN 3&#13;&#10;WHEN &quot;% of US teens/parents who say they lose focus in class/work because they are checking cellphone&quot; THEN 4&#13;&#10;END' />
+            </column>
+            <column-instance column='[Calculation_913386323761242131]' derivation='Avg' name='[avg:Calculation_913386323761242131:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[question]' derivation='None' name='[none:question:nk]' pivot='key' type='nominal' />
+            <column caption='Question' datatype='string' name='[question]' role='dimension' type='nominal'>
+              <aliases>
+                <alias key='&quot;\% of US teens/parents who say they check phone for messages as soon as they wake up&quot;' value='Check phone for messages as soon as they wake up' />
+                <alias key='&quot;\% of US teens/parents who say they feel their parent/teen is distracted by their phone when having in-person conversations&quot;' value='Feel their parent/teen is distracted by their phone when having in-person conversations' />
+                <alias key='&quot;\% of US teens/parents who say they lose focus in class/work because they are checking cellphone&quot;' value='Lose focus in class/work because they are checking cellphone' />
+                <alias key='&quot;\% of US teens/parents who say they spend too much time on their cellphone&quot;' value='Spend too much time on their cellphone' />
+              </aliases>
+            </column>
+          </datasource-dependencies>
+          <manual-sort column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;\% of US teens/parents who say they spend too much time on their cellphone&quot;</bucket>
+              <bucket>&quot;\% of US teens/parents who say they check phone for messages as soon as they wake up&quot;</bucket>
+              <bucket>&quot;\% of US teens/parents who say they feel their parent/teen is distracted by their phone when having in-person conversations&quot;</bucket>
+              <bucket>&quot;\% of US teens/parents who say they lose focus in class/work because they are checking cellphone&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='height' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]' value='40' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='width' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]' value='388' />
+            <format attr='border-style' data-class='subtotal' value='none' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='font-size' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]' value='8' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[avg:Calculation_913386323761242131:qk]' max='4.0' min='1.0' type='interpolated' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='border-style' data-class='subtotal' value='none' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='line-visibility' scope='rows' value='off' />
+          </style-rule>
+          <style-rule element='title'>
+            <format attr='border-color' value='#f5f5f5' />
+            <format attr='border-style' value='none' />
+            <format attr='background-color' value='#f5f5f5' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-disallow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[avg:Calculation_913386323761242131:qk]' />
+              <text column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[avg:Calculation_913386323761242131:qk]' />
+            </encodings>
+            <customized-tooltip show-buttons='false'>
+              <formatted-text>
+                <run fontcolor='#787878'>Question:&#9;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]&gt;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <customized-label>
+              <formatted-text>
+                <run bold='true' fontalignment='0'>&lt;</run>
+                <run bold='true' fontalignment='0'>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[avg:Calculation_913386323761242131:qk]</run>
+                <run bold='true' fontalignment='0'>&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+              </style-rule>
+              <style-rule element='datalabel'>
+                <format attr='color-mode' value='auto' />
+                <format attr='font-size' value='8' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='size' value='1.5052486658096313' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-color' value='#ffffff' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+                <format attr='minheight' value='-1' />
+                <format attr='maxheight' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]</rows>
+        <cols total='true' />
+        <tooltip-style tooltip-mode='none' />
+      </table>
+    </worksheet>
+    <worksheet name='Sometimes'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontname='Tableau Bold'>Sometimes</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='makeovermonday/2019w34' name='federated.0538lta1o7oh9g15zxdyi1ehvvw4' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0538lta1o7oh9g15zxdyi1ehvvw4'>
+            <column caption='Teens' datatype='real' default-format='p0%' name='[Calculation_913386323730268164]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [respondent] = &quot;Teens&quot; THEN [response] END' />
+            </column>
+            <column caption='-SUM([Teens])' datatype='real' name='[Calculation_913386323730665477]' role='measure' type='quantitative' user:unnamed='Teens'>
+              <calculation class='tableau' formula='-SUM([Calculation_913386323730268164])' />
+            </column>
+            <column caption='Diff' datatype='real' default-format='p0%' name='[Calculation_913386323731750922]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='(sum([Teens (copy)])-sum([Calculation_913386323730268164]))' />
+            </column>
+            <column caption='Color' datatype='string' name='[Calculation_913386323732602891]' role='measure' type='nominal'>
+              <calculation class='tableau' formula='if [Calculation_913386323731750922] &gt;= 0 THEN &quot;Parents&quot; ELSE &quot;Teens&quot; END' />
+            </column>
+            <column caption='ABS([Diff])' datatype='real' name='[Calculation_913386323735203852]' role='measure' type='quantitative' user:unnamed='Boths'>
+              <calculation class='tableau' formula='ABS([Calculation_913386323731750922])' />
+            </column>
+            <column aggregation='Avg' caption='Question Number' datatype='integer' default-format='n#,##0;-#,##0' name='[Calculation_913386323761242131]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='case [question]&#13;&#10;WHEN &quot;% of US teens/parents who say they spend too much time on their cellphone&quot; THEN 1&#13;&#10;WHEN &quot;% of US teens/parents who say they check phone for messages as soon as they wake up&quot; THEN 2&#13;&#10;WHEN &quot;% of US teens/parents who say they feel their parent/teen is distracted by their phone when having in-person conversations&quot; THEN 3&#13;&#10;WHEN &quot;% of US teens/parents who say they lose focus in class/work because they are checking cellphone&quot; THEN 4&#13;&#10;END' />
+            </column>
+            <column caption='AVG(0)' datatype='real' name='[Calculation_913386323764977688]' role='measure' type='quantitative' user:unnamed='Sometimes'>
+              <calculation class='tableau' formula='AVG(0)' />
+            </column>
+            <column caption='Parents' datatype='real' default-format='p0%' name='[Teens (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [respondent] = &quot;Parents&quot; THEN [response] END' />
+            </column>
+            <column-instance column='[Calculation_913386323761242131]' derivation='Avg' name='[avg:Calculation_913386323761242131:qk]' pivot='key' type='quantitative' />
+            <column caption='Frequency' datatype='string' name='[frequency]' role='dimension' type='nominal' />
+            <column-instance column='[frequency]' derivation='None' name='[none:frequency:nk]' pivot='key' type='nominal' />
+            <column-instance column='[question]' derivation='None' name='[none:question:nk]' pivot='key' type='nominal' />
+            <column caption='Question' datatype='string' name='[question]' role='dimension' type='nominal'>
+              <aliases>
+                <alias key='&quot;\% of US teens/parents who say they check phone for messages as soon as they wake up&quot;' value='Check phone for messages as soon as they wake up' />
+                <alias key='&quot;\% of US teens/parents who say they feel their parent/teen is distracted by their phone when having in-person conversations&quot;' value='Feel their parent/teen is distracted by their phone when having in-person conversations' />
+                <alias key='&quot;\% of US teens/parents who say they lose focus in class/work because they are checking cellphone&quot;' value='Lose focus in class/work because they are checking cellphone' />
+                <alias key='&quot;\% of US teens/parents who say they spend too much time on their cellphone&quot;' value='Spend too much time on their cellphone' />
+              </aliases>
+            </column>
+            <column caption='Respondent' datatype='string' name='[respondent]' role='dimension' type='nominal' />
+            <column caption='Response' datatype='real' default-format='p0%' name='[response]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_913386323730268164]' derivation='Sum' name='[sum:Calculation_913386323730268164:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Teens (copy)]' derivation='Sum' name='[sum:Teens (copy):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_913386323730665477]' derivation='User' name='[usr:Calculation_913386323730665477:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_913386323731750922]' derivation='User' name='[usr:Calculation_913386323731750922:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_913386323732602891]' derivation='User' name='[usr:Calculation_913386323732602891:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_913386323735203852]' derivation='User' name='[usr:Calculation_913386323735203852:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_913386323764977688]' derivation='User' name='[usr:Calculation_913386323764977688:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[Action (Question)]'>
+            <groupfilter function='level-members' level='[question]' user:ui-action-filter='[Action1]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:frequency:nk]'>
+            <groupfilter function='member' level='[none:frequency:nk]' member='&quot;Sometimes&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <manual-sort column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;\% of US teens/parents who say they spend too much time on their cellphone&quot;</bucket>
+              <bucket>&quot;\% of US teens/parents who say they check phone for messages as soon as they wake up&quot;</bucket>
+              <bucket>&quot;\% of US teens/parents who say they feel their parent/teen is distracted by their phone when having in-person conversations&quot;</bucket>
+              <bucket>&quot;\% of US teens/parents who say they lose focus in class/work because they are checking cellphone&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <slices>
+            <column>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:frequency:nk]</column>
+            <column>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[Action (Question)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323730665477:qk]' scope='cols' value='false' />
+            <format attr='display' class='0' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]' scope='cols' value='false' />
+            <encoding attr='space' class='0' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk]' field-type='quantitative' max='0.29999999999999999' min='-0.29999999999999999' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='1' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk]' field-type='quantitative' fold='true' max='0.29999999999999999' min='-0.29999999999999999' range-type='fixed' scope='cols' synchronized='true' type='space' />
+            <format attr='display' class='0' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk]' scope='cols' value='false' />
+            <format attr='display' class='1' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk]' scope='cols' value='false' />
+            <format attr='line-visibility' value='off' />
+            <format attr='tick-color' value='#00000000' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323735203852:qk]' value='p0%' />
+            <format attr='font-size' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323735203852:qk]' value='8' />
+            <format attr='font-weight' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323735203852:qk]' value='bold' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='display' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]' value='false' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[avg:Calculation_913386323761242131:qk]' max='4.0' min='1.0' type='interpolated' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='show-null-value-warning' value='false' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='rows' value='false' />
+            <format attr='in-tooltip' field='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323730665477:qk]' value='false' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='fill-above' id='refline0' value='#00000000' />
+            <format attr='fill-below' id='refline0' value='#00000000' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='line-visibility' value='off' />
+            <format attr='line-visibility' scope='cols' value='on' />
+            <format attr='line-pattern-only' scope='cols' value='dotted' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='line-visibility' scope='cols' value='off' />
+            <format attr='line-visibility' scope='rows' value='off' />
+          </style-rule>
+          <style-rule element='title'>
+            <format attr='background-color' value='#f5f5f5' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <customized-tooltip show-buttons='false'>
+              <formatted-text>
+                <run fontcolor='#787878'>Question:&#9;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Teens:&#9;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Calculation_913386323730268164:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Parents:&#9;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Diff:&#9;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Color:&#9;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323732602891:nk]&gt;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+                <format attr='mark-color' value='#f28e2b' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323730665477:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <lod column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]' />
+              <text column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Calculation_913386323730268164:qk]' />
+            </encodings>
+            <customized-tooltip show-buttons='false'>
+              <formatted-text>
+                <run bold='true' fontname='Tableau Bold' fontsize='12'>Teens</run>
+                <run>Æ&#10;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]&gt;</run>
+                <run>Æ&#10;&#10;</run>
+                <run fontcolor='#787878'>Teens:&#9;&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Calculation_913386323730268164:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Parents: &#9;&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]&gt;</run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-color' value='#f28e2b' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <lod column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Calculation_913386323730268164:qk]' />
+              <text column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]' />
+            </encodings>
+            <customized-tooltip show-buttons='false'>
+              <formatted-text>
+                <run bold='true' fontname='Tableau Bold' fontsize='12'>Parents</run>
+                <run>Æ&#10;</run>
+                <run bold='true'>&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]&gt;</run>
+                <run>Æ&#10;&#10;</run>
+                <run fontcolor='#787878'>Teens:&#9;&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Calculation_913386323730268164:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Parents:&#9;&lt;[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]&gt;</run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-color' value='#0074aa' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323732602891:nk]' />
+            </encodings>
+            <customized-tooltip show-buttons='false'>
+              <formatted-text />
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='size' value='0.10895027965307236' />
+                <format attr='mark-labels-show' value='false' />
+                <format attr='mark-color' value='#f28e2b' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='4' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk]' x-index='1'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <text column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323735203852:qk]' />
+            </encodings>
+            <customized-tooltip show-buttons='false'>
+              <formatted-text />
+            </customized-tooltip>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='size' value='2.8618783950805664' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-color' value='#bab0ac' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='5' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323764977688:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[avg:Calculation_913386323761242131:qk]' />
+              <text column='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[avg:Calculation_913386323761242131:qk]' />
+            </encodings>
+            <customized-tooltip show-buttons='false'>
+              <formatted-text />
+            </customized-tooltip>
+            <customized-label>
+              <formatted-text>
+                <run fontname='Tableau Bold'>&lt;</run>
+                <run fontname='Tableau Bold'>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[avg:Calculation_913386323761242131:qk]</run>
+                <run fontname='Tableau Bold'>&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='size' value='2.6408839225769043' />
+                <format attr='mark-color' value='#f28e2b' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]</rows>
+        <cols>([federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323764977688:qk] + ([federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323730665477:qk] + ([federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk] + ([federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323731750922:qk] + [federated.0538lta1o7oh9g15zxdyi1ehvvw4].[sum:Teens (copy):qk]))))</cols>
+      </table>
+    </worksheet>
+    <worksheet name='URL'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontcolor='#666666' fontsize='9'>                     #MakeOverMonday | 2019 Week 34</run>
+            <run>Æ&#10;</run>
+            <run bold='true' fontcolor='#666666' fontsize='9'>Æ                     </run>
+            <run fontcolor='#666666' fontsize='8'>By Cristian Saavedra Desmoineaux</run>
+            <run>Æ&#10;</run>
+            <run bold='true' fontcolor='#666666' fontsize='9'>Æ                     </run>
+            <run fontcolor='#666666' fontsize='8'>Twitter:@cristiansaavedr</run>
+            <run>Æ&#10;</run>
+            <run bold='true' fontcolor='#666666' fontsize='9'>Æ                      </run>
+            <run auto-url='true' fontcolor='#666666' fontsize='8' hyperlink='tabdoc:load-url url=&amp;quot;http://www.cristiansaavedra.com&amp;quot;'>http://www.cristiansaavedra.com</run>
+            <run>Æ&#10;</run>
+            <run fontcolor='#666666' fontsize='7'>                             Data source: </run>
+            <run fontcolor='#666666' fontsize='7' underline='true'>PEW RESEARCH</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='MOM-W34'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontcolor='#333d49' fontname='Lato,Helvetica,Arial,sans-serif' fontsize='11'>Americans touch their smartphones 2,617 times a day</run>
+            <run>Æ&#10;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <style>
+        <style-rule element='dash-subtitle'>
+          <format attr='background-color' value='#ffffff' />
+        </style-rule>
+      </style>
+      <size maxheight='750' maxwidth='1200' minheight='750' minwidth='1200' sizing-mode='fixed' />
+      <zones>
+        <zone h='24133' id='8' name='Questions' w='39583' x='583' y='7333' />
+        <zone h='22667' id='1' name='Boths' w='66667' x='28167' y='33067' />
+        <zone h='18133' id='4' is-centered='0' param='C:/Users/csaavedra/MIC/Performance - Documents/Tableau/MakeOverMonday/2019W34-0819/teens2.png' type='bitmap' w='12583' x='48833' y='14267' />
+        <zone h='22133' id='5' is-centered='0' param='C:/Users/csaavedra/MIC/Performance - Documents/Tableau/MakeOverMonday/2019W34-0819/parents2.png' type='bitmap' w='20750' x='78167' y='10267' />
+        <zone h='20000' id='9' name='Often' w='66667' x='28167' y='57467' />
+        <zone h='7867' id='10' name='Often' pane-specification-id='3' param='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323732602891:nk]' show-title='false' type='color' w='6750' x='66750' y='20000' />
+        <zone h='20000' id='11' name='Sometimes' w='66667' x='28167' y='79200' />
+        <zone forceUpdate='true' h='2533' id='16' type='text' w='27917' x='57917' y='6400'>
+          <formatted-text>
+            <run>Do click on each question or group to compare</run>
+          </formatted-text>
+        </zone>
+        <zone h='14267' id='18' name='URL' w='25583' x='583' y='85333' />
+        <zone forceUpdate='true' h='4133' id='19' type='text' w='52583' x='43833' y='2000'>
+          <formatted-text>
+            <run bold='true' fontcolor='#4e79a7' fontname='Tableau Light' fontsize='20'>Parents</run>
+            <run bold='true' fontname='Tableau Light' fontsize='20'> &amp; </run>
+            <run bold='true' fontcolor='#f28e2b' fontname='Tableau Light' fontsize='20'>Teens</run>
+            <run bold='true' fontname='Tableau Light' fontsize='20'> interactions with Smartphones</run>
+          </formatted-text>
+        </zone>
+      </zones>
+    </dashboard>
+  </dashboards>
+  <windows source-height='30'>
+    <window class='dashboard' maximized='true' name='MOM-W34'>
+      <viewpoints>
+        <viewpoint name='Boths'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Often'>
+          <zoom type='entire-view' />
+          <highlight>
+            <color-one-way>
+              <field>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323732602891:nk]</field>
+            </color-one-way>
+          </highlight>
+        </viewpoint>
+        <viewpoint name='Questions'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Sometimes'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='URL' />
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{E0083140-9E56-49D7-A514-059AA9BD34E5}' />
+    </window>
+    <window class='worksheet' hidden='true' name='Boths'>
+      <cards>
+        <edge name='left'>
+          <strip size='300'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='3' param='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323732602891:nk]' type='color' />
+            <card pane-specification-id='5' param='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[avg:Calculation_913386323761242131:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:frequency:nk]</field>
+            <field>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]</field>
+            <field>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:respondent:nk]</field>
+            <field>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323732602891:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{0F692DA1-58B3-48AD-9A93-EBA294F2ADBB}' />
+    </window>
+    <window class='worksheet' hidden='true' name='Often'>
+      <cards>
+        <edge name='left'>
+          <strip size='300'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='3' param='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323732602891:nk]' type='color' />
+            <card pane-specification-id='5' param='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[avg:Calculation_913386323761242131:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:frequency:nk]</field>
+            <field>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]</field>
+            <field>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:respondent:nk]</field>
+            <field>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323732602891:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{64D7AB0E-A3CC-4447-B741-9CE8E2F43299}' />
+    </window>
+    <window class='worksheet' hidden='true' name='Questions'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[avg:Calculation_913386323761242131:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:frequency:nk]</field>
+            <field>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]</field>
+            <field>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:respondent:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{E2D7D5C9-0009-4364-B4F8-93B69BD7D7AD}' />
+    </window>
+    <window class='worksheet' hidden='true' name='Sometimes'>
+      <cards>
+        <edge name='left'>
+          <strip size='300'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='3' param='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323732602891:nk]' type='color' />
+            <card pane-specification-id='5' param='[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[avg:Calculation_913386323761242131:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:frequency:nk]</field>
+            <field>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:question:nk]</field>
+            <field>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[none:respondent:nk]</field>
+            <field>[federated.0538lta1o7oh9g15zxdyi1ehvvw4].[usr:Calculation_913386323732602891:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{CF2E0D3D-1F0E-401A-93F4-5C837CE1D53B}' />
+    </window>
+    <window class='worksheet' hidden='true' name='URL'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{AC3A25F5-F24E-4704-8E93-1191BE2D6EE3}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='384' name='MOM-W34' width='384'>
+      iVBORw0KGgoAAAANSUhEUgAAAYAAAAGACAYAAACkx7W/AAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAAgAElEQVR4nOzdd3gU1734//fMzvbVFvXeC0ggQHRTDLhgXMA9dmzHJbaT69zk3twkv+Qm
+      v+/35pfmxGm3+LrhuDdMN733IiGKBOq9967tuzO/P4SxsSkyBjfm9Tw8D9qdOXNmpT2fM6cK
+      iqIoqFQqleqqI37ZGVCpVCrVl0MNACqVSnWVUgOASqVSXaXUAKBSqVRXKTUAqFQq1VVKDQAq
+      lUp1lVIDgEqlUl2l1ACgUqlUVyk1AKhUKtVVSg0AKpVKdZWSvuwMqFSqr6e+zm7+tu7kmZ+1
+      kkRmSiQ3TU3Dbvxyi5am9l4kg5EYu/GSznf2d/LeO+9wvKQSQTIwados7rvndkw6zdkHKn48
+      236BPNh/znR01/wKKTb1kvJwue1a9zYrthXymz/+nTDTyGvqE4BKpbokPq+X4poOLFYLqbEO
+      IkK0bN5zkl+8vJchn/yl5u2VlftZWdB4aScrMiveeoXqThffeewJ7rtzESX5O1m3/eA5DhYQ
+      QzMQI8ciRqYSbMpHEUynfx6LoLu0AHQl5E6bxz997wlC9B+9pj4BqFSqz0Hgxlk5TIodqVLe
+      PrWVH764l4LaPq4bE4bf56eyqZuGziEQRcamRpMSYRk5VZZp6hrEbrNg1CgUlDZjDw8lO86G
+      oig0tXZzqrEPS4iZKZnRZ2rfTpeHnmE/sWEmquo7qOkYJjEunPGJDhRZprl7CLdfZtjpob69
+      HwSB2HArOo3A0JCTY5XtDPmCRIRayUkOx6L/RDEoB2ht72LK3LuZNnkSAK01JTS3tp7j9iV0
+      U75/+oc+AkffRUpfjH7CDWcdpihB5NYjBDtrEGypSEnTEDQfPU0ovkEC9ftQXEOIsdPQRKQi
+      CICiIA/Ug9aBIPgJNBxA8StIadchmq2n0w4gtxwh2FULkhlNbB5iaAKCIJyVB6M5hFBZi/b0
+      ZQf7e9UAoFKpLp/oaAchWpH+YQ8AS9/fw66qfsKsRrxeLwPrj/MvD83n2sxw8Ln5xfNb+c7d
+      c6k4XsKOsi7uuGk6Y2OtbNhxlPePtDIlK5r24zUs31vFbx+bg92goai4mr9tqiItykDnoB9R
+      CdLj9PP/PHYjU8Lhp89uxhsEOss4dKQMJC3/85PFWPyD/PzF3bjREGKQ6B9yMy43k1/dOeHs
+      mxC1TMzNZl/+QRbNm4YeL/WNbWQvuPaSPhNF9uPb+Qv8DZVIiZMJnnwbX1EupiVPI4gCynAj
+      rlXfB0M8oi0U3+H/RTv939FPuhlQ8Gz4PooShuJsBq0FxdmOr3gd5vuWImgEfHv/A9+JTQjW
+      aAh6UJx9mL6zB43DelY+So7s5q3NJ/nLn36FFti9cbkaAFQq1eVTXdfBoE8hymEGYP6scXzr
+      dgcOs46Az89fX9/BhsO1zM0M58P66b7DpQwHNPzmyRtIj7HR29nFG3vr+T//tIhxMWZkv49f
+      PbuRDceaeeCapJGTBIE7Fk5hUmIoguznp39fz8m6LmYmp/HCzxbzt9e24UhN45G5qYCAzSKx
+      70ATTq2Z5390PVa9BqfTQ1Ov+9M3IQhcd+tdHC36HUtffweztwND4iSuv2bCp48dBblpG77K
+      IkwPLkdjdaB4OnC+div+muPoMvLw5f8dQiZiWvw7BI1IoGYV7i1/Rzv2esQPn07MCRhv+zui
+      NYJg9Qrc6/+G7B5GNAj4y7egm/NbdJNuBtmH3HUKwai/cKZOUwOASqX6HBTW7jjOPpOE2+Xh
+      RHUHmVlJTE22ATAmOZLO7iEO17XjCygYDHqcbh8KnAkAw7KWXz8yE7thpDgqrG5DZ7cRaxbo
+      HXSNpJMYysnaTjgdAHQ6PRPSItADKCKhFh2yrCCIIqFWE1qNgF6nJcxqOpPTcLsZn8vFrhON
+      TMuMItJmYmzip9voFUXm8N4dOBUjQ+VHsMaP52cP34vs6uO9DzYz+8ZbiY+wjfoTCtTvRwwf
+      hyD6kIc7ANBEpRFsKoCM8QTq89Hk/hTF3YUCiI4xCHInwa4GxPi0keMjJ6CxRQEgWuMAGRQZ
+      NCZESziB+p1oIuIRI9MRo/I+1fxzPmoAUKlUn4vPH8TjA4PJyON3zmRWThx6jYASDPLamkNs
+      L+0iMzEco06krccJJt1Z5988e+yZwh9g2OVjuLePf/3vLWcdF5sU97nyOS4njR+6gmw5VsWy
+      LcdwOKw8uCiPmRkfPY0ANJUfZfnmw/zsl/8v4kADf3t2Kdv2FzJUdZAOYogJs573GueieAaQ
+      2w7heqvwrNc1Vj/gRnF78ec/Q+Dox4pjKQQCnoumLYh6DDf/N76Cf+DZ/C8oARkp7VYM83+M
+      oNVe9Hw1AKhUqs9B4J6bppzpBP647s4uNhS185sf3Ex21Mj7G7YdYWOt9+wUPlFZtZr1GCwh
+      vPSzmzBqRleTHV1WBa6dPoZrp4/B6fKwaU8x/7OqkIk/uRGT9NGAyKqKciyRCSRE2hAic3nq
+      u9/mf156DdEczi9/9T004mfLk2hyIERMx3z/c+eomQcQTAaknH/DMP2uT5+sXHg0laIoCPYM
+      DAv/hCIHkLtO4vngKXwlE9BPXHjxvH2G+1CpVKpRCwZlgrJCZ58Tj9fH8ZJ6dpW0X/S88Zmx
+      4Bzg+Q0n6R7y4vH6OVnRxOpDtaO+ts2kp7ymnc4hL063l0BQYW9+OZsKG+gZ9qLRiEgagUAw
+      yCc3xQ0LC6O/pZaCk1V4vR7c3gAaUSDgc9PY3MZn3UVXkzIPpesg3sNvI7uHULwDBKo24Cvd
+      DkhIqXPwH38Bf20hit+DPNiEr3Apge5zjDr6JF8X3p1/JNBWAcEAgtYICCgB36jypj4BqFSq
+      SyYIcL76cER0BNekWPn7GzsASIiLICPSStXw2ed/MgV7WBg/WjyBZzecZM/hUgAkrcTt1+d9
+      dM1P1KQFQTgrlZuuyeI37xTwxNOr0eh0PPezJVgMGl5Zd4QXVgUA0EgSD9w6DZP27Hrw+Onz
+      mFpUwivP/gUAndHC7fc/jtRXwysvPE/i739LRIjhPB+I+KlHGk3cfPQzvoM3/y/4D/9x5EWd
+      A/383438d8ZPkHv/Dc/aRz5KxjEWY/qdH31IZ6UpcKbuLupR+opxv/f2R+9GTkOXc92ns4Zw
+      1ucmCAKCuim8SqW6UhRZpq61F0WjJSXaijjKzkkAr9dHXdsAiiiSHGPHqNVc/KSPcbrcNHQM
+      YTIZSYy0IAoCcjBIfVs/br9MfLQdm/Hc7eSKotDZ1sygy0dcQiIm/chxfT3dmG2h6KTP3nii
+      eHoJdtchSCbEiMyz5gGgKMj9dcjOXgRzDKI9dtQduaAgD7cj97cg6EMRw1NGfa4aAFQqleoq
+      pfYBqFQq1VVKDQAqlUp1lVIDgEqlUl2l1ACgUqlUVyk1AKhUKtVXSEtdBcUl5Zw8eQq3L3DR
+      47ubKmnoGqKhqoqzR/8HOHas6ILnnjUPIBAI4Pf7LyHLKpXqq0Sj0aDT6S5+oOorZ7Cvh4Sx
+      1xAiusg/doJZ0yfT1tKIR5ZISohFFAQUOUhzYwPoLej8PvySTGhoKBLgGuqnua2L+MQ4PB4v
+      ihygu3eQiPBQFEWmrbkRHzqS4mPODgCKonzmWW4qleqrR/0ef/1JehOC7KO1ugSXOZZw3RAl
+      Vc2Mz0ygqqSIkLgM7EaJQXcnALUVFeTOnMrRE6XMnDmNQHDkeaDiVDFhSVkAtFSX4LPE4xAG
+      KKluUZuAVCqV6qtIkQMoiPT2DxMZYccWGoZ7aBCAIaeXULsFg+ETM5JlL5LOgkaS0Ou09He3
+      0trvPbMq6sCAk7AwG7awCNxDfWdPBPP7/WoTkEr1DaDRaNDrR7cmvOqrpb68iP6AHkn2Ep82
+      Bovk42RpDQIKqVk5WE06XIM9VNW1YrLaCDcEcekjGW6rIzVnHA3lJfgVkai4OFqbWkmOC6Wp
+      y8XYjGR87kFKKuoQ5CBp2ePVAKBSfROpAUA1Gt+4JqCBnk6qai9xM+ivAjlAVWU1/uCXu6n2
+      eSkK9TVVuLwXH51wuTTVVTHsHt3qhiqVavQ+FQB+/eNHefDhx3ji8SdY+u56LntXUtDDj554
+      hJpO5+VOmcG2Kp586l/Yvr/gzGu/++kTbD5UDsB//X//xrp9J2mrLeGn//pDnnrqn/i3X/2R
+      M888vl7uf+C7DLq/xKcg/wA//8kv6XVdwTwEhvneY4/SfK7t8C5GDvDH//gplR2X//f3ES/f
+      +9a3aR0eWTf+v/7wc07Wd1/B66lUVyfNr3/9619/+IMsy2xe/Q43PPQzvvet6/jzH55mwW13
+      c2THal596328GgtpiRE89+dnkCWJ7QeOk5kQyhuvvsz6LXtIHzeRlrIjvPjSK9R2DDEuO5Mt
+      K17ncFEFmz5YTY9PR1dlAeu27aWmphpzeCLdNUf5x2tvkn/0JGljxqGVXbz5ykts3L6Pyooy
+      krNyaa06xgsvLqW0vpPc8dlnNmQoKdzHSy+/SnldO2OyUln6n89Q1tRLZEwCc2aMLB27fd1y
+      YrNnk5kYwf6tH2BPzaNs7yq0ydfwm1/+mCm5YzCZzYjA+vdfY+f+Amqqq4hIyaa37gQvLn2F
+      2vaRe+lrr+fFF17gQGEJWTnjaDp1kGXrd1K4fwf5p+qZOCGbfVtW8+qb73GqvJlJUyegAYZ6
+      WvnH0pdYv3kbAa2V1Bg7//Wff6eppYkVK1YTnpiJw6Dw+tIX2LLnAFV1rdxxz11Y9BIDbdX8
+      5cW3qC46zO6CUsZPGE996RGWvvwquw8eITY5A09nFa+v3U1X9VEGRAedlYUsfeV12gaCZGel
+      svL1/6WoopEPVi/Hq7XTcGIPm3bup7amGmtMCnUn9vDK6+9QXNrAxKkTkASB3RuWUd0rY/F3
+      8dfn32DStBlsfv8f+E3RHNmzEVkysGHNKqwxKUTadKx+9w3eX72BoN5GSkI0AuAZ6uHlF59n
+      3abtBHVWQvUBXl66lA2bt4PRgTjYyBsf7GNaXg7bVr1Nq1tPUkw42z94j827DlBTW4MtKo3S
+      /C34FD2b169F74gjNszM6vfeYNmqDZjCY/F3VfPW+n1MmTiOravfoN1jJDEm7Iv/Nn2FiKKI
+      JKmrvasu7JxNQP293ZSXlqAxh9FXe4RX1h7myScfZdnzz9Ay4KHw4B7eXr6ejPRUXnv2GYYM
+      8Tzx6APoA3389pnnuPfhx2koWMee4zVUlxXR7RJZOGciby1fw5Q51xEdauOBx55iSnYyJls4
+      i5fcidBXy/INu9m0/FUqekUevX8xWzatZ9g5wB9+/1duvu8RhmoOsnF/MQCu3iZ+95cXuePb
+      j+JpPsaba/dy3fw5hEQm8f2H77ngTU+dNZcjW97jD3/5H9r6XHy4KOv8hTdjtjj4/g9+SIot
+      yJ/++hJ3PvgYDUc2sudYJc/99Q+kTl1Iqs3LP95bR09bA0Xl9SxefBs7Nq2kubWNF154jeuW
+      3Mu103I/9vQkMnnmtdwwayIvPPs/OL1+Cg4fJCxpPEk2ma27DrHx/Vco7xV45IF70Gk++rX4
+      hvs4UHCCGxbfzWDtYdbtKkRrCGHhLYuJNXl55Z3VDPd1smHVe5S0uAiRe3nm+Xd56LuPc3TT
+      Gxyr7qCs6ChOQpgzKZ3lazcyY94NhNntPPzEDxiXaOP5Z5cyb/E9zJ8x6cx1TRJs23WQU8cL
+      qK4sp7aphS1bd2MPcwAK0YlZZMeZ+WDTLvZtWMahmkEee+huXv3Pp6ntGBmpcHz/Vo7WDfDQ
+      Qw8QF24FQWTqrPnMn57Nc//9HLbYBA5vXkVjVz9r1m4gNiEegGsWLCLMaOHRf/oBEzJHtgEM
+      jU0jLz2Sleu3UbhzDQcqB3jsgVv569N/xhEbz74Nq2jt7mHtum3ExMZ8tm+BSnWVOmcV4dCu
+      jfSlp/K7p39Lf8U+ultr+P3v/4QPgdbOPkDkiR/9hNxEG6uea+Deu35MTFwsg00naevp4T+f
+      +QOuYRfp7W0AxMYnEhkWRFEUjCYzkkaDze7AoNXwwbuv0qXYcXf1kJzkoaO7nTHZi4gMD0cj
+      CvicPbS29/Di3/+ExzmErb0dmEB/VyuCOZqstCS6csaytbqZ69MSECUtofaPNmwWBAFZHmlP
+      lxUZQRAYM3keS5fmcfTQHv7Pz/6VF95eQbRFg9lsQRQ1OByh+LvK6Ojs4tm//BHX8BAZLa00
+      NLVQ985SJNlLaLoWYkKwh0cTHxOJpBHRmuw8+sh9rHnjBVyKiT9mj0Nv1FBbdowXXl1LSnwE
+      Pp+HgAyIEskpyQycstAjK7S0tjJ+4mKiI8ORPrGWt9ZkJSEujvTkBPp6+thTsZWj9cPog4PI
+      4RYAQhPG8pMffZ+20n10d3fw56efZng4QHv7yA5M8YkphCsBFKUek9mCRqPB5nBgDjHw2OMP
+      sf6tlxgK6Hh67J8wmCSyxk+g5f3nOaWJ4I5brqXw4F485kTibXpAIDElld6uQoKDMg0NDYzJ
+      mUViyhji7AptXQOkRVmZMHMB40vq+dPvf8ukBXcyNVbmxXc3kxQTit/nQbJEMW9KOivffoNA
+      RDapEWYATBYLGlHAFhqK4fQ67InJyQg0EKzppbG+gdqS4/zxb1Xgc+LURrBgagrvvvUWQsQY
+      UiJDLtPXQ6X6ZjtnAFh013e4/dpcAHo143HYNnPTrUsIDHcTF2EHRIwGHaBh9uyZLHvrNfpm
+      5pIxLpcxsWFcM/9GQg0QkxrP/qOfSFyUcFh0bNm4Dt1N11JeXs8tjz3Fyd29AEybOYtnlr5O
+      d2UWQ+4ghpBosjNiyJ61gDiHHltsMgARCRmEBNp5b8UaTuzax6y7fwB8up04b/JkNq1dhmag
+      kqK6Ae7MSmLN2y/j1oVh1fnRGy2c2WdCMuLQuFm7YQPXz55GWmIEM+bdSJgRotOT6Z8wnj5T
+      GtOyEwlqQ8B59hZ1PvcATZ1ObrrlVt76x1J6nD7sRiONdTWEJ6SRkxHO0ZKac/4iMtIzWL59
+      E6GBZlyB4FnveQe72bxpAzsOn+SxXzzIhufeJHfOvQzXFdB0+lCt3oBGFAhPzCIhwsG8Gxdh
+      wktqfDTHP3kxUYvDILBxw3oWLZhBfesAN91yG2+//ALdg17CTBK26BRswU6KG/Xc9+0p/Phf
+      f0nezQ+dc/envCnT+NubG4kQuml0hpCZFAlATWUZEUljuD4shN0nS4nwaIhOymJMopmi8lZA
+      YOEtN/PdH/4fHv/50x9LW8LhENm4Zj23LLzhU9cbN3EStsIWltx+Kz09AzgMIgsX3cLjP/4P
+      nvjFn/iMW7aqVFetT/UBGIwm0jKycJyeOGC0hjN9YhYtza04opPITE3EbreTkTUGg1ZDVu4U
+      woww4A6SnTOe6xbMoautBdFgZVzOGBx2O4nJaYSH2QkLjyIjNZmJeZPo7+kmOiGNubMm0z/k
+      Zdasa0hMSiZ34mSunT2DrLQEdu0+wO33fpvr58+hr7MNWWMkd1w2JoMOjdbInDkz6GxrZcq8
+      W7hu5gQ0ko6IqFjSUxLO3GDmuDwirVr6hv3c//B3SYsLIyY2joHeLryKjkefeJIo++kNrUUt
+      kyfn0t3VTVLGOG5cMJvu9lZEg5XxOWOZOXsOeAYYdgcYlzuB8DAHUTHxJMZGE2KzM2ZMNiF6
+      aO/s46a7vk1OchQAyelZ4HORljOJzPQUMjLSsdvtZGZmEGIxExufxMzZcwjRBnDEpDBuTCZZ
+      WRloNSKu3lbW7i1iem4Wc2++mxm5GYzLzWWgf4CZs2aRlJhESlIC4ZExpCbFIektzJo5mbbW
+      FvTWcHLGjFwrOS2DMLuViKhYUpISmTR5Iv3d3cQmZxJl19PW0c0Nd9zP+NTokd2EBInYqAgy
+      x+eRnZWFxWJm9uw5OKxmzCE20jMysYeYiY5NIG/qDMYkhtM96OPh736X2NCRGrglxMZAbwcB
+      rY3vPHAP43MnIHuGycqdQkZqEhnpKVjMZnbs2MsTP3iKEP2HkVhk0pQp9HV3EZOQQmxUBKnp
+      WdhtFqJi4pg0dSZjkyNobe8iMS2TxLgoQkJMbN9+kCefehKLXm37VvsAVKPxlZsHULR/My8v
+      W49z2MmMhXfxxH23nnfP0atBV81RnnpmGctffObLzspl5xnq5Fc//yXZ8+/mu/fcdMnp+Afb
+      +ckv/i8TF9zFo3cvvKr/Xj6kzgNQjcZXLgCoVKrPTw0AqtH4xk0EU6lUKtXoqAFApVKprlJq
+      AFCpVKqr1Fl9AOoa4irVN4cgqN3hqgs7a5yY+gejUqlUVw+1CUilUqmuUupMEZXqSxCQFTwB
+      maAMkkbAKAmI6hO46gumBgCV6gvk8ss0D/nocgbwBRUUFERBwCCJxIZoibFo0aprWai+IGd1
+      AqtUqitDUaDXHaC8x4PTf+7NfgTAYdSQE27EqFVbZ1VXnvpXplJ9AQa9QUq63ect/AEUoNcd
+      5GSXm4Cs1stUV54aAFSqKywoK9T0e/EERleo93uCNA361GHZqitODQAq1RU26A3S5/5seyg3
+      Dvj4iu4KrfoGOX8ACAyzY/U7vPjSy+w+Uf+ZE962dT1BGegu4/1dJQQvesZn0cX29cf4+Feq
+      rnAXR6u68A+0sreghMuxZXlfTT7bjtcCA+xdfwjXOY5pqzhKcUPvqNLrqdjLkboB8g/uonPQ
+      +7F3vBzZvoMedd/zb6R+b5DgJyrzHpeL7avf5eC2Dec8xxtUcPrUEKC6ss4/CsjZTnm3ltuW
+      LMGoNXDqwFqOVPSgC0vj5jkZ7N64CZcliYVzs9m1YQtDTg8TF30bY/N+dp9qp9vtY/71UHx4
+      J+s3t2I1P0J8oIqDJ5vJnn0Lafo2tuw6ij11CjfPn4ww3M6aTdsYHhjC5Ainrx+W3D2d6lMe
+      pqW62dcfS7LrBNuO1jJ38QJKDu6mtuEgebc9xJREDQc2b6LIX4TuvhsYlgVaSw6w90gFwz4t
+      dqMPffJ05iXDui0HsaVP59Z5ExB8Q2xdvYL6QR233X8vxRv/QfeQTPj4RSyclsLx/RtZVSJi
+      0N1BzYl8KjuKSZ68kHHmLjbvPkFM7lxyQ2V8AS87N2zAI7vJvfZuYrR9rFu5gi5TGvdMjWDV
+      pkNEjJ3BBF0HPSYfwa52YrrreO2DYwRdHqbetJCWqhOcaKjHkT6NGzK1rNu4FzEii5tmxbN1
+      9X6GfC5m3/0I3pLNFFT3MfuWbzE21qwuffw14D1X048AYVExdLY0nfc8T0DGemaPBNXnpQQD
+      KL5hFL8LJehHkQOAgKiREDR60JkRdOarakLsWRvCnMVgxUE/B/btY0CKJNhTRdLMO9DU76Gy
+      sZHDZZ34+xqwxKTS1R3kjvkJ7C3qo662lkcef4TGiqPkTpxKjDlIlZLBgzfEsH1rHXc+sID8
+      jftp6Wpk5q0PMHBqK2JMLtZgN4VNHq7PDaddSCXRfYIBazxt1cNkhvVysNNIbdFxHnnyccJM
+      LsrLAixZEMHRTjPjEqMQ3N1E5i3imrgg28t6iBUHEBPzMHfWMuba+Rw9cYxAxRFODUJ7ZRsT
+      5k1Brt9PgXsc9+f5WX1Mwd1dwV0P3MaRTZXkTE0nRHDhjZnO4hmxVBT1ct2i8Zysa6f90DYa
+      vCJt9f3ExQRp99lpP3mccTcuITXMQHfxBqqs13H/vDHsWPYKDT4t1fXNjIvV02dIRemrJcph
+      4WR/CPddE82Okg5CfF6uuXE+Jyrq0HWUEjXnPuwte2hQrAwP2lk8Vc+uRjf5a9disAi0DNnI
+      GxurBoCvgV53gH7v2c/AklYLikJHaxPp2bnnPC82RIdJHQ30uSgBH8HeOnylH+ArfAVf/vP4
+      jryC//ibBI6/TaDoXfxF7+E7uRJ/9XaCnWXIwSCi0Q5a4zf++3WBJ4BBnIZwZkzKYHt5PWPM
+      AXraGuh06ohLcZA1IZn5kxLQanw06fVoJAmNICLIHlpamnF6TqdjtqIbrKJ7MAUNQzTWNhA0
+      hBBicNHcWMOgR4tBJ4Jv5EuhkTQYdToggKxIDPW3UF0/AIY09IKP+sZGwsJBpzMgaYDT0doc
+      Yqa/u42hqNO7ewkiOq2WgE6LTisRlBVMjlAm5sxiXLgZI4DJiqezkVqpE5sjB1+XDq1WQmJk
+      RIbRbMVV2UXvUCiSpEOr1SAIGsyhkUzNXkCaw4yvrwgAnTmMuKiRvYj1IQ4G6mppbAOzxcbE
+      7BtIthswdOWf9RF7nf3UNXixhiSj6dWi1UoIgojJbKShoRZlUCHCKNGvF9FqtSBI2ONSuGnJ
+      HUg6tfb/dWE+RyHucbvoaGmiv7uTof4+QuyOT5+nUwv/S6XIQQIdJfjyXyRYuxt8TpB0CKL2
+      oxq+KH54MPiHoLucQHsRgeNv4LUlopv6OPrxd4LW9I19Kjj/E4Co0F5fRWOfwtxrZ9Jfe4Sa
+      HpHJs+eTl5OFMNBIa3+AxOQUIkLtOMLCsdvDyU21c6q6l3ETs4kKD0cw2jF52xkUIsnLjqCq
+      tofp8+aQk5ZES20tCZPmkB4dgiBqsVptRIRHYLU7iIyKIjImDbPSjjckkTGpyUzLieVEcSVh
+      sRnERjoIj4nEZnPgMOsICQunv7URXUQCCdERxERGYHeEEh4eSmhEBBGhYYyfNIHumjKGsJAY
+      F4HOHI1dbqfJH8PCWZnYQqyEhkZjtdkIDQ/BGBKO0teM1xBFSkIUoVEROKxh5IzLoLW6Ap/O
+      TlJiPKH2MGIiHYSG2tEAekcSZlc9DYMCC+bPpKn8FG7RSnJyEnZHGFFhdhw6P3uOlhMel8Xc
+      aeNxOOw4wiMIs9vIGJPNQGMlIRkzmJQShdVmwxERht0RQ16ajeLyOhzRyYSG6NUg8DWgEaDT
+      GTirH2Cgt5u68lMYzRYMRhOO8MizzrEbNCRZdd/YgudKUgIePIdexLvxp9Bbg6CRECQdgqg5
+      U2H8NAEEAUGjRdDowO8iWLkJf9MRpKRZCPqQb+TvYtQTwTqaqtCFpeAwqZOHLwt3L2VdQcYm
+      RnzZOVFdYYoCVX0e6vtH18svAJOiTYQZpfOXV6pzUgI+nJv+HblkJYLe8vnTC/5nElcAACAA
+      SURBVPrBYMP87WWIjuRvXBBQZwKrVF8Af1DhVJebLteFx6cJQIpdT3qoup3jZ6UoMu4dvydQ
+      +I/LUvifSVcOgC0Jy3dWIerMly3drwK1kVGl+gJoNQLjIowkWLVozlOJ1IoCWWEG0hxq4X8p
+      /A2H8Re8dFkLfwBBlKC7As+BZ1Hkyzug/cumPgGoVF8gRYFhX5AOp59Br0xAUdBrBBwGiSiz
+      hF5S62SXQlEUhl6+AWGoFYQr8xnKAT+WJ7ajsSdckfS/DGqDvkr1BRIECNFrCFHH919W/rr9
+      KJ2lCKbQK3YNIejBW7IW4zU/+Mb0BagBQKVSfa0pioyv6D0Eg/WKXkfQWwiUrYWpj8Jl7AuQ
+      A17k4S7wDiIEPCiihKI1ozGHIxisVzTYqAFApVJ9rSnBAHLjQRCudHEmQH8jQVcv0ucIAIqi
+      EOgsx1+2gWDtTpTBFhTfMAR8CIKCggCCBkFrQrBEIMZPR5u9BG3iNASN9jLejxoAVKovRUCW
+      8fhlZFlB0ggYtBp1R7BLJPc1oLh7EXUWuMIzYxS/C7mjFC6hH0BRFAIdJXh2/gG58SCiRoui
+      0SIgIEgGkAwjcxFGDh45x9mFXLYW98lleCPGor/252jT51+2u1QDgEr1BVEAjy9IZccQZS2D
+      9Dp9+GUFgyQSZTMwIcFGQqgJSaN2BH8Wwd46CPqvdNkPgICAPHD+9ZvORwkG8BS8jG/vM4iS
+      bmQ46YeF/TkvJJy5HhoRUZRQ+hvwrHqCQN7DGK79GaLWcOk3cpoaAFSqL4CiKHQP+9h8so3a
+      TiefHHrXNuDhZPMAeUl2rs+OQq9VO4lHQ1FAcXYiaCS+kAig0aK4elEUZdRt80rQh3v3nwkc
+      eRlRb+KS8ikICIIGRRAJHHsNt3cI002//9xNQmpVQ6X6AvS5/KwqbKbmHIX/h4KywpG6PtYX
+      tRFUdwQbJQXZ3Q/i5W0bPx9BEAl6Bs800VyMosh4T7xH4MhSBL2ZzxukBEFA0BoJlqzCc/SN
+      z5UWqAFApbrigrLCnvJO2gY8Fz8YONk8QHFTv7oj2CiJyhc3OUsRRETZB+cN42cLdlfh2/tn
+      hMs8g1iQ9PgP/BeBntrPlY4aAFSqK6xj0ENl+/BnOudAVQ/qQ8BnpwT9KMqV20hHQEEWtIym
+      Jq8E/XgL/gEB9wUWobvUjAgQcOMteOlzJXOBAKAw0FrJu6+9zAe7TlBVdpT2Qf8FE+uqPEhd
+      //ne9VJ05DieSwjWvv463lj6Fu2jq0B9I7WXH6C03YMs93DkcPUo6x8XSbPiIA0DlyEh1QU1
+      9bhw+8/+w/c4hyjcvIzD697E6/p0cOge9tLrVLeIG42gRgcoKEE/YswkBKMDJXB6x73L9RQl
+      B0BRUOQgosEyqgI92N9EsHLTyAifK0GjJVi5heBQ56Uncd7loAN9vPvqOmZ96yFy4x2UF27m
+      wNEKWgYgJcrIzg+WU9QWJD3BQcG2Vew82Y3dfYoO83iaSgqJT4hDGGhg5cadFByrIiEjlv2r
+      VnCyopqANR5rsJ3VK9fQgwOb0s2e7Ts4XFxDfGoK1Yc3s/lQBQnpGegVH8v/+98pdsYxfVIi
+      W5e9TZ3TSJrVzf7iSiqrO0hIjKG5vJDdu3ZwqqaD0qMHcBqjCfG1snLFB7hNMYT4mln2/mpa
+      /WYsw1W8u2orQWss3sYC3l+7DU14GmF0suydFVT0eEmNsbH7g+WcaPGQHGNm17qVHCxtIykl
+      BT1u9m9dy/b8cqITEqkv3MbanUcIjc/AbtJQc3QHy9fvwhybxXD1flZsOkRkShbSYD0rlq9m
+      QIrE7Glh9569FJxqIDElFYMUoHjvZtbtPII5OhFnbT7vr9uNFBZPhElgzcu/Z/OxNhLSI9n1
+      7hbKasoJzxzHcM1hVqzbiy0+npqiYuzR4ZQWnsASFUNT+VG8koFThw5isIdRUl1PoL2U5et2
+      IFtjCNTtpsucTWNZETEOkfffeo8uwkiKtiEMNnG40YPN20j9kEBDwU527DuMPySGmFB1L4LP
+      4mTLAC197rNecw31Yw2PRqPR0NveRHhcyqfOy4iyEGZR1wW6ENnvIdBZhlK5FUUyYbr3VbRj
+      byM40ILS3wgGK3gGAQVBEEEQUFBAGanNX7QgVxQUvwshZhKKsxv8LqT0G9AmTL3waYCvZDVy
+      1TYESXfZ7vfjBEEA7zBC1HikyKxLSuP8AaCnhj0tWq6bMQaDXkdzZTEJ0+bTd7AIFzVsPtBE
+      b80hhmWFNjK47/pceuuO8PaKvWQvWESiw4jQdYqtndEsTu5hR5MWoa+Pm66fwLZTnQxX5zNm
+      wZ20HFxHf0DAKSUx1tbBiaYB9mzdTsDZQYM7gsljYtF7Wohf8Dj9298ictHDuA6sIWjTsnxP
+      E/ctmY9ZJ1KWvw9H7kx6io4z6ZoJ7C2uoffIVqqG/JzIr8GibaDLlMucnFjyN24iPG8eOckR
+      uLubqG9tpPBkD311J5iy5Du0Fu9E6W1iU1ETrSeL0ZgVips8zJ87nQibBY3ip6GmiprSErp8
+      OspLy5g27zqSImzohAArlq8md94iUsM9rN1Yw0P3TGD56mM01Z5gzuJvUbxrDUGPG1f4OBKC
+      zfRqo4gLNdBWX0N11Slq+gP0lZYSP30eWYkRmI1GtK5m7NO/w8xkH0XFAe6YKbKv20L+sn/g
+      13gpLFcIkRuRBT/HGwLk5STSXXWC8vpuKpprwBWgc9hHpDFATW0NBdU9ZIf08e7afMYtuJHG
+      Da9zbEjD4b2HmHPdHAx9FayrDJKmVFPqstBRUs6CJfM5sP4waZOy0auNh6NW3Tn8qQCgM5rp
+      aqqhtvgQ42bfjFb/6Vri+HibGgAuQh5oxV+zB01UNsbb/oomNAWNORxt5k1IafPQTbwfIWIs
+      is85UoAH3BD0IUsmBIMDPAMQ9COIZ/9BK7Ifgj4wOtDN+SmGa36E78TbCPZEBMmAlDj9wjX7
+      gBfv4RdQhlpH9iG4UgQBNDp0mQsv6fTzDwN1xGHr3UtT32xiNEFkrRaT0YAkaggEgkyYv4Tb
+      p8fSWrafg92AAKJGy6y546ksbmBW0sjuWDq9Hr83gE4ngcGIQa9FEP0gKyhnArAGs9mIXjQQ
+      HPITljaN7z54C17fp5fOlRV5pPlNgeSx47EaT9+CRotBr8dkMmHQafEHvMiSjVvvf5RUYxBP
+      wENoTREvr9zOU3fdTW3xQd5d1YTgrOKhh+7krbcK8QTAqFPw+YP4fH5yZt/Gkrx4PHKQ9PhG
+      Nn/wLrPv+j6JwVqqXWYW3zSDU712rrvzZo7tW0993xLumhHPHffeS3nBBpY35iLLysheEwqA
+      PHLPAIiYzUZ0Lj1BgMFW9tb5WHLbDeypdLPg7jsoK9zLmqYBHrt9OnqDEX8ggKIomMwWtFIA
+      fAE0tlQeePJ7aHwelJ5inl1VyKK77kEC4uKjWPtBAbNycqisOUbqpBs5cKiAG+9YwoadRWh0
+      BmbMjKO6pJEYn4YFd32HCSY/OmmkphTwehkYGCBoBUmrQ5ADIEnnXc1SdW5h5k/XADvqK2go
+      LWTeff+MRjr31zDUcmVqjt8oAQ+CfxjTwt8gaE1nXhYkHVLMyFabmtBUlJzbkQeaCXRXIXeU
+      jMy+tcYjReUQqNyC3FWG4uxGUWREnQnRnoSUei3aMbcihkRBwIvhjpfQRo3FVbwSRZYv+BSs
+      eAaQO0tPD0+9koSR+/kMw1I/7gI7ghlIS3Kwe8N6WlxGUhLCsYdFY9SIpOdNortoBwWVnWRP
+      m4/ccIB9FQNkZ8QRmTUP00A1YUmJaAebeH3VdmRrGrfMGYdGEYmMiQTJzOTsJPZt2Uzo+AVM
+      SLKjM9lxhOixxWQQLTezcc8xHPHpRFgNyMEAhtB4csYlcWjtMoT02UzPiELWWkkIH1n6VQ4G
+      sIZFYJQ0hEdHodGGMD0vlX2bNtDqMRGu72NvQRV5M+ei6akkv6KXOTdcR2aIi+3F3eRkJjN5
+      TBQbNmynrtvJLXfeS2/xLg6VtZMQ7+DYgf1I0eOYNj4dS4iZ/tpTNHjMZCXH0l51lPphCwvm
+      TiNEB5VH91DUInDjwkWkWjpZu6uKhXfeQm5yGFvXbyR+8kLGxFvRW8OwG7WY7eHYHHakniqK
+      mv1kZCXjaamguNnNnHlzCA/RY7GHcWzHegwJOdj1JmJirQimeCYlwrqNO5Ct8aRlxFJ1tJLp
+      82Zj1orozGY8/UOMmTQJn8tDTt50onQ97D/RSvrYDBIjw4geMxfdQB15188i/4OVVPRATkYi
+      GouD3mO7aFPspGWkULNvE8ebvFy76AZibAa1CegzEAWB0tZBAh/bEsw50EN7XRmNZcfQGUxY
+      w87eESwiRM/czIhvzKJjV0qwv5lg1U70E+654HGCqEE0OZDC09EmzUSbuRBtwjQ04Wkj/8+5
+      feTfhPvQT3oA3cT70MZPQdRbRoZeaiQkezyCpAfvIKLRfsFlp4OD7fiPvTrS7HSaosigyGe9
+      dlkE/egmPXhJTU1Xdjnovlr2d1qYnRV58WO/AhqKdrPlcCXpUxZwbV4amq/Zl69oz1qGwydz
+      TXb8ZR504KW44BTpeZNRN4T77GRZYd2JVo43nneExKfcMTmO3HibGgAuwlt3EPfqH2L70cGR
+      wvkL4G/MRxOagmg5f7nmrz+Ie/nDZ/KkyEGEiLEjS1V3nILL9WRwumPa/Pi2S1qm+sq25DpS
+      vzaFP0DShHk8+b0nWTA5/WtX+ANMuHYJs3Iud+EPoCd3mlr4XypRFLh2TASxduOojp+QYGd8
+      nFr4j4ao+KCvHF/N7i9k3oQS9OM9uZqLDTQNOrvP3jxGDqBJnoPx5mdQtGa4jBvLKEEfQe9n
+      G2b8IbUrT6X6AtiMWu6aEkdGlOW8AVoSBWakhXHLhBhEUS38RyXgRdCH4C9Z/YVczlP4OsGS
+      VRedByYGvSOjjOD0ehUK2vQFaEJTMN7/DrLWjBK88PagoyIAShBBvvAQ/fNR63Qq1RdAEATC
+      LHrunhJPdecwpa2D9Az78AdlDFoNMTYDuQl24hxGNGrh/5kIgohctxfFO3RF9wSQfS78R15G
+      0GgQRjX7+PSKnkoQIWYiUvQ4BEFAisjC/NAq3Ku/j9JdAZLhcz7tCVzqEhNqAFCpvkB6rYac
+      OBtjYqx4A0FkZaTmr5NEdTnoSyUI4B3EX70TXc6SK9Z05m/MB2fHyLLN8oVr78qHhfLp2r9+
+      9r+cGQ4qCCA5EjE/tBLPwefwH1kKyCBqP3veFUDQoIiXVpSrTUAq1ZdAIwqYdBIWvaTuBfC5
+      jNSyBYMN39HX4AqtC6QoCv4Tb4906iryyPLTFzpeZxnJmRKEsAy0ybM/dYyoNWK69ieYv7sF
+      Tc5dgDAyX0EOjvRnjLJPQ9BI+A8/f0lLYKgBQKVSfX1pDCOFpSAgtx0n2F1zWZZJ+aTgYCvB
+      +n0gaABlJAhcKFu2eARrwsiSFKJ0wRnHkiMJ86KnMX9vN7qFTyPGTAKNFtk7hOIZRAl4QA6c
+      DgzymX/AyHveYRTJeEnDS9UmIJVK9bUla3ScmVqp0eI99gamG38L4uWt2/qKl49MhNRoUWSZ
+      oM/Fheb3amPGIX1/N94Ty/AVvj6qa2jM4Wgm3gcT70P2uQn2VCP31RHsbYCBJoLuXhSfc+Rg
+      vweloxhpxlNoosahS7/uku5LDQAq1ZfA5w8y6PLhDwYx6CSsJr3a+XsJNPoQhA/bvyUDwVMr
+      kK/5ZzTWmMt2DdnnInDs9ZG2f2Bkav/FA4wgiOhzFhPoreNjyx6MiqgzIsaMh5jx53zfV7aB
+      QHcdpjn/POo0z+UbFwCG+nvQmh0YtGrrluqrRQEGnV4OlrWQX95G14ALX0DGqJOID7cwLzeR
+      CamR6m5gn4XegiJqPhoDI/vxHn4B4/X/97KtweM9/ja4+z6a+avII00voxAcaBnZQ/gyUwQR
+      KXHK507nAqVkP+//93/x7HPPs7Oo4bxH1RVupLoXIMixDWupdwIdxWws6jjH0T7y9+1l0H0Z
+      O2rcLaxfl48XQHZxaNd+9uzdQk2n8zMl0152gJPN55tM4SV/527qak9yrLTtY697OLRu4yiX
+      qe5h48o9eM9z6ycPbaR9GHD3sHH/0fOmEmw7wcqDtSjA7h0b8Z8jvZbSQkqb+s6fFd8wG/cc
+      Gk2mL87de8H8ns3Fnm378F2kr6qn/hTHKtoueIyiKOzfsQPX12TRfEVRqGvr55kVBby8uZji
+      ui7aep30DLpp7h7icHkbf1lZwIsbTzDk8n7Z2f3aEI2Os2YAC1oT/uNvEmg7dVnSDw534d//
+      d9B9fNmH0XfQosgonr7Lvh+AqIDv2IrPnc751wJikP3bSphxyyKyEiOozt/Gup0FGCLicNYV
+      smLdTrzmCOSWAtwRU4nQtvPGX/+XE63DZMVpWLalkPLjxSTlZHBs80q25ZcTnZyJs7MareJh
+      f0EhdW0ekpKiqMrfwPrtBylpGCAhSmLDe++TX9ZMQnIs+3eso7ikGaPQw4pV6xmSInCX5bPz
+      6CEKSjvQD1Xx2rtbCJoiiTcNUNru4dS+DzhWP0RSjJ39G9dwtLqbuPgw8resYueRaiJio9m9
+      4R0OHzqM05RCYrgJd2clQ+YUave9z4adBVgSxhJukagv3suKtVspre4mMyuFgCDQcmwnH+wo
+      JCB52Pjau1T3B4myONlx8AStfX6ajm5k856jWJPH0VW8hZXrdzM02M3KZevxmMMx+xpZs2YL
+      Q5ow9M46lq9az/HSCjLz5uGgn9XrN1BdWoZPb6X02DEiE6LZtWsfySmJHNn0Jm9tPkpYfCbV
+      h1ZQWlJBtxSL2VnN8tUb6A1asGv8yEaJsh0HKGqswR6VhNJfxwdr1nL4yCls0XEc2ruN+tKT
+      tAdDsXsbeXfFWuoGJBKERt7ZeICDB0+QOCaVou1r2HqwhIjEFGwGHwe2HkQyBNm66xgOS4Cq
+      mmYKCvOpKznJoDYSXV85763axIDkQN9+iDW7i9h7pIoJE7KQBDdbli+npOQUQ5YkaC1k+ZrN
+      dPtNdFUXog2Lo3T/TvxGG7ICNXt3se/4Iap6RRJMQyx/dwWFhY0kTB6LGShvaCDT4ubl1Tsp
+      2FdAROZY7AYJ+ut5Y9UmCg8fRR+dQF/ZAdZsPgCOGAbKt3OwqJF+Zx87131ASYuH5GiRte8t
+      o6Cqh6xMC2v+sYpDh/chxuUQbb08C7K19Azz99WF1LSdfzkIWYH6jkHaep1My4pBc5nbsb+J
+      FMB37M2zxuULgkigfj/S2FsRdabzn3yxtGUZ59ofwUD9WU8TStCPNP4eJFvcxROR/QSqd6DL
+      veeyrp8V6KlCCLrQJs/6XOlc8C/M5xqgvraaruZK1mzLZ6i7gf2HDrNx3Q4GhnvY8bGan9YQ
+      wZTJE7n94QeJNkD0mJnMiVOoqShk1b5KBhpPkF/RRVtLLYP9XTQPSsyanoME9Pd2M27eEmK9
+      ZVS0OnEFfDSd3E5Vh4/q6npmzZ/NtjVrcPn97Ny1m876NsYsuAOjr5XItGwmTJrPLTdMorGu
+      jawJk8nLm8jtS5YQbC7kcGkb9WX55B85zPZ9ZfQ1n6KgpIluj5Z77plH1eFyANw9DXQ6A9TU
+      NZE6ZiwOgwZwkZ9fx63fvp+xMSF4Bnvo6Omivq6ThPQsEpMyyJuYx+3fugOzs41mbyhz8hJx
+      DvvxdZWxp6SCvYVdPPz4w8yaM4WJ465h8fV57Nu4mu7hAQ7v2c/eg0e4ZvGDTMuMOPNZWqIz
+      uWvxPE6VlBLmb+FIaTW9gwKSqGHalCmMn3s7c8fHog2J5K4lc6gva2THplV0DQ5RsH8vLS0d
+      9A4PUlfRRNaUWUSFaPG5BhHCslg0K5ljRyvQhUSxaPF1tJefYteuo9z80GP4Tx2itb8VTeIM
+      ZscqVJUVsnpPGQMtJzlU1g6CEY+rnmNldXh6mzhRUoFXNGF0JHDjDdNpqzrF5g820u9xsn33
+      AZxdDUTl3UqWu4u20zUmgz2Be27Ko6SuHZdrGDkwRP7OE/hlNxUlJyhpC6L199HZ0093u4u5
+      t9xMe0slJ3fuI+uW+4gLDDOysLJCfWMDiqsbpz2bRRN0VJRX88arb1LR3MaAMYk752VQkH+A
+      dRv2MTjQyq7Dp+hqqkKXkEuyycmAbCcrLYb6gu2Ez76P6eZ6DtT30OeO4KGbsjlc1vq5vlwf
+      8gdl3t9bTmPX0KiOz69oY1dRo7ol5CgIggj6T0z+EjUoA424t/161E01n6TIQVw7f49StwtB
+      8zkqAToL2qlPXPbFE7UJ0xESpn/udC4YACxhicy7fiGZ8WGEx6Zyyz0PsWjGWGxhMcy/7V4e
+      uGnGWUmF2HV0trbjk0FvNCBqNAiSnvi0cdz9nSeZkR565ujoxGTMupGoqigyA11tdDm1+Dor
+      kePymJIVAwpYoxOIsGgxh4Qz56Y7ePjOGxBFCYNei6SVwGBGHxikp6ebli4XMVEOQkwmurq7
+      kEU9GRNn8uBDDzEmOoS4rIl868FHmJZmR6fXI+kkpE8MGps+9wbcVQc4WNUJiIh46e7oZMjz
+      4cQPHZPmziLYWsyhE81YrAJdHV0EBInE5CQUXyv13VYWzZ6AomjR4KStrRWXz4hON0xP3zAG
+      WwxzF97JfXdei0lS6O1qZ2D4o92flICH1pZmtHobmVOncXL9CpLypp3+pVgR+zsZcHqRdHok
+      rQZRAKMlkmuuv40H7r4J8+meHbMtiqiwkA9TxesaoqWlE7PdiqDVo5ckRI2IVS/Q1NzCICJ6
+      AfQGA1qt9P+zd9/hUd1Xwse/906fUdeodwmJ3rsxYDC4YNwS23Eck968SbxvssnuxsmmbbLr
+      7GadrJM41YnTXTa2wbiAARtThWgSIAk1UEO9j6bPve8f2BgsAQIzGoTO53n8GG6ZORIz99z7
+      awcMZtLzJvOBBz/N9ZOSAZXM5FRqj9eQPTWP6sMnycxKRLVYMRuNqKpKdKyT62++m0/etRIU
+      sFotmI2mM79lk9mC6e3lj8srK5l/w3LSHBaKCvPY+9Yu0grzsb79bVFVMxazEdVgwGiG3vZ2
+      ugfcQz6nZ+KNTuejn1jHxCQHAY+LxuZ2omNiiU/OYvXdD3DP8hkYrQ5yMlKJdRawcGYK2154
+      nYDDQdepRlp7AsTYjJitVswm0xUbTniytY9DtedWbTKoCvFRVuKjLMO2DmzYWyOF4UdCUVBs
+      CUOaZBSTDa3qFTxv/QT9IpO2huOv30Nw7y/PU8t35DNvFXMUlqJVl/z+F31dewKW/KFzCy7V
+      BZqAVBzRMSSlJGKyxZIZB0fLa4lKmcDcqWmUlx5DiU4mJzOd2Pgk7CaVxDQnNWWVpBZNwRkX
+      R1pyHPGZU8mzdnOstpXkzBxSEuJJTMkkPj6eOMfpXvXGY3s42uxj5vUrmD0ph8GmE8TnTSE3
+      K4vk+BgSExOZkJ9B2f6DhOxOCnIziHcmEueIIjEpmzhLLyeOV9IbXcjcwhQS42JoOFFP3vSF
+      WN2NnGz3UDB1NsmmPo6d6CAtO49UZwIJCUk4omJITIzCYHYQHe9k8NRxeowZLJ0/BbvJQlqy
+      g4qqZnImTiI7K5OE+Fi8Xc30EMviBXPJzIihrqqJjMIiEuPiccYkYgq14LJmMjE/nwWTnBw4
+      VIUzeyoZsR4ae3QWL5xOzdGjBK1O5kyfwMnjtTjzisjJSMdiMmIL9XOiQ2P58sWYQz7KTvZz
+      66r5mBRQHIkYuqpxW1LIy0gi0ZlGVFQsc2YXUXv0CB5jLLnZGcQlOHE6E0hMisMAeHpPsWdv
+      KTFZ01m2aBrxMVEkJSbiiI5j1tzJHD9wkMLrVpGX4iQ6JoGkxBjiMiZT4BjgWE0zzvRs4hxm
+      omKjsDiSmFqUjS0hncKcVGIcUSQ7E4mKTWTWzAIqDpUStCWSl51JbLyThHg7cUmJWBQVmz2a
+      hJRkYqLjmJiZyMlWN5MmTyR7Qg52o5VJUyYTE2UnOjaelNRE4pMTiXPEkJOdxKFdu6g75WbB
+      jYuIAhx2B87kNKJj4khJjCc6znm6PsRgG6/uLiMurYgbliykMMPGsaPHsSSkkZWWQlxCEobQ
+      AFVV9RTMX8y8WXNw15cSSJ/LkonpOBzRJKY6iYqOIynm/Zfz21PRzL7jredsS461M7cwhVkF
+      KXj9QboGzr1TdXkCLJmSQaxDCsJcmE6wejN6f9PQdnZdg5h0zIU3DSn4clFakEDpX4a9+9dD
+      fszT7h7R6puKooRlZvKVet3wLgc9Qm0NxzEkFOCMuvxBSRV730DLnMnUzISLHzxmBKk+UIw3
+      cRLTcxPf1yt5+zto6dPJyxo7q7OerafxGG/sqyClaB5Lpude+GB3J0fbNablXh0/65Obynh5
+      X90520wGlRtmZpMaZ+flkjq6B4Y2VXz9Q4uYX5Q6WmGOSboWwrX+YTix7e1JWu/SfANY7/g5
+      5ilrL7kJRg/6GXjqdpRhEovud2G//68Yc657n9FH3lUxDDQl+/LqWZ5t8qIVVyCSq42Rwrnv
+      r5PnHdaYJPLCt05W2MVnTeUDWVNHdrDdybTcsIZzSYZb5iGoaWw9XM91kzMoykhgb+XQ/gZZ
+      HmJkdJShF3hdQ0mYgCnv+strfzeYMC/8HP6X/hHFGvueFp9r598lcsMMdJ1QKIQOaKHQ6dKJ
+      QlyD0hKGVo6amJHA/csnMTEzntae4YcfpycO1/4s3mvIypy6jhb0Y1n+L6cv3pfzmoqCZdIa
+      lMz5Q/oQdBQ05aq4d37fIpcAPE08+bO/0w80Vh6iboQjJIQYayZlJRBjP7ctubKpm7++UcGT
+      m45wsq1/yDk5yTGkxEkCuDgdNeDizF25rqGFAlhueRRz4Y3vr53caMV22/+gq4YhC63p18hT
+      wPnTWLCP5558ilNKMsvmZLJ390Hcmpnb71jFCy9sINEMhrTJeHu6+ciHbuAvz77F/GwLJXVt
+      RGXOZEaggs1tIeZOyadkz1GiMvL50A1T2bzlDZq6A1w3J53Dh3dgXZ9BzmWFjQAAIABJREFU
+      UXwHwVAc+1/+I639fooWriawZwstCTbafYmsmwpPl3SQO2U+9980PwwVr4QIn5zkGBZPSmfT
+      wZMjPufeZRPlcz4SukbI1YmiqOhBP9jisK7+PuaC5ej+wcuuD6DrOnrIjzExD9tdv8D7/GfR
+      Va58Pd8IO+9PE2yvoz/7eh7+zP3orh7mrfkIdy8ppL62hZjsqXz4/ruxWTRmxPoo3n8IZ8Es
+      3iouRtcVgqHTj2RLbv8YN8yeRFKsDYvJiLu/jfZeDwPdndhS8pg1ayl33rkEGzDQdQpT5mw+
+      /9F7aG2qxGxL4Y4PP0iSQyM6OYMoC1iMJi5aikeIq4yiKNy3fBKTskY2QOHmubksnpQuJSFH
+      QtfA04XuH0TNnI/jI89hzl+KZ88v8Ox8HF279CWS33ld9/bHCDQUY8pbivX2x8FgQb/IMtBj
+      zXkTgMGZg6NxL089sxHVEcuhLX/n1ZJaMnNSeHccrJGJcwp4+f/2MW9+IbMLcghZYoiLdgAG
+      LBYDAY8PS5SdruZGunr70E12khPjUGxxxNHM61sO4gOiElLwNZbx57+/TFLqBEA5cwfk8YaI
+      tlupq68N/29EiDCIc1j4pw/MZ/Hk9PN27pqNBu5dOpFP3TxDLv4jpLl70F09GBd/Ecc9vwWj
+      lcGXvkxw9/8SqtmM7j3/zOsL0YNetPL1eJ77BL7SpzEVLMf+4adPF3YPXjtLdVxwGGjA58Hj
+      D2G3W/F7PWiYsNvM+ANBLCYD/mAIs1Fl0O3HHmWDYADXoAeDxYZF1cFoxkCIQZcbjGbsFiNu
+      twfFYMRisaD5Pfg1AxazenrN7IAXT0DDbrejBQIYLWb8fj8mFVxuL2arA6vZKI/GYszyB0OU
+      13exu7yZho5+vP4Q0XYzhenxLJ+RSaYzRlYFvQSB9uOEOmuxTL6VQP1uvK/+C7haUYxWdP8g
+      lrU/wTzljktKqLqu4z++Cd8Ln0WxxqD5BjBOvQfbykfAYMK95d8xzbwfS9bcMP5ko+OqmAcg
+      xHgT0nQCwRCarmNQFcxGg9z1XwYdIODGW/IU/h0/QjFZ322n1zWITsfx4b+iRo18Tojm7cf1
+      lw+h9NWfWfZZD3hQEgqwrvkvjCnT3l4ReuyPBLq2ejSEGCMMqoLVbMRuMWExGeXifxl0XUfr
+      bWLw+YcIbH8UxWw/t5NWUdF7TuB541E03/lW+n3PawZ9eHc+Dp2V56z5r5hs6H0NuP/2YXxl
+      z4EWntKTo02eAIQQY46uawTq3sL78j+Br/+cJaGHHOsfxDD5Lmwrv47iSBo22eq6ju4bwLv7
+      ZwT3/frdtf+Hofn6MU67F+uKR1DtCWM6eUsCECICNE0jENTQdR1VVTBJE9CI6UCorZzBp+5C
+      NZlGtNa+HvBAVCrm+Z/COGE1Bkfi6Tt8XUPzDRA8uRP/vt+gdx4/zwJw7309NyTPJOq+J1Ht
+      I19+RtffnkFwGf/W71yor+SnRBKAEKNE1yEYCnG4uolNe8o53tCO2+MnPsbOzMIMbl86neyU
+      BFTpBL4gPRRg8KUvo1dvggvc+Q89UUf3u9ANZhRrPKrFgRbwgbcH/IOn7/ovYZy/7hvAeP1X
+      sC15+KLJWwfQQgTq92LKnINiso087rdpnl5CvY0YU6ddsZsFSQBCjAJd1+nud/PoHzazaW/5
+      sEs9W80mPnPXdXzmriVSDOYCgj0NDP7uZtQrVPLx/dBNDhwfW48hevhF+3Q4vTRF/ym8e54g
+      sO/32D+xAVPm6RFEI72Q64C//CW8Gx7GvPSfsMz/BIrJ/r4TgXzKhBgFPQNuvvzjv/PK7mPn
+      Xeff6w/w02e38+gfXh/l6MaWYN2bKP5LK/kaNoPtBE8OX15VB0I9Dbhf/Vdcv1yKduQZVEcs
+      /pInL30556CfQPl6VKOJwM4f4fr1SvwVL7/vokGSAIQIM03XeeL/dnCgsmFEx/91Uwmv76uU
+      imDD0EN+gvW74H2UeryiVBOBypfQQ2cVdAKCXScYfOkrDP56OaFjz58uTWm0gmIgVPUKgVOl
+      l/Q2gfo9aCfeAoMZxRwFfhe+9f+A6w93Emg+fPnhX/aZQogRqW3sYHNxxSWd86sXdqJJAhhC
+      9w6gnTqMcjWsxqnrYDBhzFsGKKcv/J01py/8T65GP74R1ew4t2i9AqrZgeeFhwh5+kb0NqGB
+      VrxbvwtnNXkpioJijUHvrsbzp7twvfhFQn3Nl/wjXCABuCk/WIH3Eoe7htztbHh2Pe3eS//w
+      BgZ72Fd67MIH+To5Vt02whWBQhx6/UVqekZYEm7gFGUNPWdtcFNVdoKwrP7h7uJgeT0hoLGm
+      jP4wzS7vb2+isfXCH7SQu42Kus7Tf/F1snd/FaHLufZofqrKq/H4BzheVX/uvoFmyhoub1r+
+      WHeoqpGuvqFNFtML0vnpV+8lPnro3WzliVaaO0Z2gRhPQq6O0522V0E/uR70YbntMSyzP0Kg
+      rZzBDf8P91Nr0I5vRDVa4Hy1hBUVPJ0M/u3DhPqaL3gtC3bW4n7uk9DXdE5h+jMvpRhQzA60
+      mtdx/Xol7rceu6T1ii5QErKHjX/dTsH8WdgUPxUHdrK/ooXU9GROHt7NzkNVxKek01FVws7D
+      daRm52AmxKbffZddrbHMm5HFvq2b6QxFkeZ0UFG8jf21XRB0Y7LF0N5QCQYTJW9tobrFQ3pG
+      KgbNR2e/D6uvneL9ZRxv7Cc3JxVV12mpOsDrO46Smqrx+p4ecuMG2LJ1By5DLHFqH1u3bKPd
+      a8YaaGHrG7vxWRJxmvvZW9lFrEnBFqVw+EgtSbEGGpoG8HZWsW1XKQmZubTWVtPWVI53oJut
+      JxUS/a2o0QlYjb28+Jv11A/0EJ2UjtZdy9bt+zEnpGLTetm+ZSu9OBhsOsJbxUexO1PpaGjA
+      kRBHdVU1CdYgr76ymVaPiWSbl62vb8NjcZIcZ6fp0Gv875+34EjMoKVsI+UNA7h0CykOjV1v
+      bOWUx4zN10pn0AG9J2j12Ym1qhzds5ldh+pIzsmjqe4YjRW1qDFm9m59g27NQUpiDKqiUXd4
+      F7uPNqAPtLK7+AhtXf2kZqbSULaHPUcbSMvKpKfuEFt2HSYuOsCOMg8xwTZUZxwDrT4UdxuH
+      jx6kttVLRmocx/a+yf6yRqLSkom2mHB11rNty06CUQm4GsrYebCWpDQnOzfvJLPIyc4dFaRY
+      3Ow9fIiGXp0ctYFfv3aUvrYO0nIy6a47xBt7jhGbmkl3fRkHDhzmlMtIaqzK3u1baeg3kpka
+      fzV8z9+3l3cdo7T63Lszh83MDXMK6ex1UVnfhsc39Eu7dFYBOanXUoW79y9Yv4tg5cYLjvsf
+      DXrQi2HSbVgXfhbP3l/i2/BllN46FNV0eobwRdr3FdUAni4Cpc+gaxqKNQ7dZDtd2tg/SLCj
+      Ct/+3+N7/Zso7k4Ug+kCL6agqAYURUU7sQNNB2POohH1MYzoOaqz9jClbTApqpMt27bTVFPN
+      7OuXE+qr5/n1m7A4zGxQknhw9WQyM9JYvOg2jm3aQMKC1VRueRWHO4uSjhhWL8jh0J6tGGLS
+      qT74FnFpEznaOMjS62PRddA8fZRV1WGLbafLMg/zse2cmDuLXPUU67ce5847b8DM6TtV32A/
+      3T3tHFr/PK6iBNqCieTH2Ni/Yz3exAXEWI20N9WTkJlFa9lb9AYnUvJqBRY1m/q+FHpOVHLj
+      kkLWr99CfO9R7HNuYmVcPzW7XyRq9g3cV3T64chkT2BGnoNNW7djbTxMl2qitNXD4vg+zJOW
+      kZVgp+lYLy31x9joNpLo6cQ5IZtdxcWY0zXqAlmsirPzxkvPUd1vYm/F02R+6R9ISs0kIy/E
+      tKJ0Dh43kJObxpHiUowtPWwv7UbdfRj1zlXUNXWSOlBD5tp1oIfo6+qmveII6+Mnoxx8mrzr
+      P4Vr+0YOnfTSe7iKjC9+iajeI2yvHmT10lkMnizF4czC2FfOwSN29r26DZPFQLcniL+jiVtv
+      W4HV30xNyQYI3cgDUwY4sv8E7vhmgjOup2n/do75GykfjCE32MqJ5j7Si3S2vbyNrCWriPG3
+      8beNr2MyGukNGs76QOnUH9wNs+6g+bXnabptOuboFOIGqqhoSKbirXquX5zMq68Wk6SU45y6
+      jBO7dhLqtLLzQDMEDpCQ/nWmJF/ggz9GhEJDV6S8fmYBWakJxDqsTMxJYc+RE0OOCQ5z3nim
+      A1pvw9VxU6CDadYDhPqaCO7/HarFeklDSOH0UhK6FiCw6ycEdj8OdicYLBB0g7vr7Qu78fQ6
+      aSN6QQXFGk2g5LdY5n389FyHixhRxAGfD6sjFmdCDEE1iltWLKSp9E1Kqk+hROdw+z0f5cbZ
+      GSiKgsNhJzbBic8fwpnsJMagMOAawJGQQlJCHEZdw+/3MOgJkpA/jYWTk9m5eRPdZzWBKAYj
+      SSlpJMZYCIZAD3lRTHEkJydhfjviPcWHmLLwepIcGnlzllAU7+f11/dQtPBWEj01bC4pp7mh
+      gfTcQrLynZTtrGTO8nTe2lJPXkE8qA6cKamEvANgTmTRgulYjQrJaRkMDHTzTvOr2RpNQkIM
+      qt+NKxDF0jX38OAtc/F7dJypqTgUDyW1nSy5bi5mLQDBIH6/F483SPKs1cxPDfLKq1tp7/Mw
+      b9nNfPRDd+IwgTUqhhh7NDEOGyaLjdTUFKwGlYF+F4Vzb2DdJx5gUv5E/M3l1NuTyY8xEAw2
+      U1atsGL+JHz+AKaEXBZMz8Hd72bKohV84iP3Em8zEPB5sMYkkJQYj9FgIjEplYQYGz6PC1N8
+      Pnfdt44lUxJQTNEkJyVhMSokp2bS19t11o2LleS0VGKjrQz09pOQkkG0zXS63ZMgfr+Z5NRk
+      LGoQQ3Qmt9/3ACvm5r7n82jEmZyCw6SiAbFJKSTFOdACHgKmKFJSneiDXhSLjZTUdGJtCv39
+      g+TOWsJH1n2UzOir4qv+vqUnDa1Ktbusjj+9Ukx9SzenztPUk5EUF+7QxhZdRx/sHPkFMYxx
+      EJOJMamIQM1WCLgu+eL/DkVRUYwWFNWI4u1BcbWg+PpRDObTBekv43WVgItAzbYRDSK4QBNQ
+      kLrS/ew5eIT4wpnozYc5UO9l6ZLZ1JUV0+a1s2jJUmK89ew+XE1CViGpcXYCgz0o8QXMzLXx
+      2osbMObOYfl1C2k5uJni2h6m5SSwa/dhbAkJZDpjOLzvILb0ImZOzsOkBxjw6qTF21BjM4jS
+      BonOyCPOFo3aV87L246QM7WQQMBKUarOvrJTpGQm4bTq7C+tImPSLKJ8DZTVdlNUmElbr4n5
+      swqwWwzUn/KxeHERDa0aKxfPxNBfzavbj7Dk5tux6l7S8nIxB924YycyzdaFJyqdBLtCU9UR
+      9pa3ct2q1RQlB9m5cz8BexpzZ6Tx1suvMGBLJSnUzvEundzsHAqTgry2o4LE9HRyo0O8UXyM
+      zElzuHFuPjvf2kFPyE5RbiZGu52B6hIqe4ykJZhITM0h6A0ybdZkqva9RX1PkKLJUzG3HcSd
+      cR1TM2JRFAttdfvo0mNIyirCaQmQlZ1LRmos+97aQbNLZeKEbKITk+mrLuatsgYy0tOxxcQT
+      YwkSkzkV+0ANxUdOkjphJqk08cobB0nLL8ISW8C02A5c0ZmoXpUkp5WYjEwU7yB5RUVU7NrK
+      wWMNpE+bRW5SIrEON5s3bsOUNYU02tl9qIa4tFzsRoX07FS8bg21p5pX9x4lYdJ8FubE0UsM
+      mXYNU9pkUnw1vLqjmoU3rSBW9ZOQkoXm8TBhxgwaDu/kRKePggmF2M1jf5yCoihsLq7AH3i3
+      Q80fCNE/6OV4fRudfYO897ualRLPP9yzTOYDnE0L4T/2AvScPKdDdLTpIT+GCaswT1yDb/fP
+      0Pubh22fvySK8vZ/6rt/vtyXUk1ooSDmyWsuWsDmmp0I1lJZwnF3PDfMmRDpUC6bq/046zdX
+      sua+O4g3R+5u2NNxkhde3oTXnMba228hOfo8nVvn0KjZtQ3jrFXkjvPKhr5AkK//fD2b9o58
+      JNAjH7+ZB26eJ8tDnEUP+nA//zm0xuKIJgDN249l9fcxTbmdwT/cieLpvOwngHDRTQ6iPvcm
+      6kVmHF8FY6nCIz57IvPVS59ufTWJSp7IRx6cGOkwsCXl8sDHP3eJZ6lMWLIqLPGMNRaTkYc+
+      uJTqxg7qmjsvevzy2RP44IpZcvEf1lVwv6oaUJ0F6AOt4O4AJfIzkt9Ld3ehDXaixmVd8Lir
+      K21dQVZ7DA7r2O9AFNeGCZlJ/OCh25lZmHHeC7vRoHLr4in8++dvx2qRz+5QV8HFH1CMVtTY
+      LLTBdtCCV8WQ1CGCPrSe+oseds0+AQhxNVEUhRkTMvjfr9zDK7vL2VJSSVtXP/5gCJvFRF5a
+      Incsm8HyOROwWUbSxDYeqW83/UQ4EVhjUa3RBLvquDqv/qenpWn9p9C5cISSAIQYRUnx0Xzs
+      toV8aPUcOnsH8QeC2K1mnHFRGA3X7AP5laEa0C2xpyt9RYquoURnoBgshDqqIhfHxRjN6AMt
+      p0csXaApURKAEBFgNZvITJZhnpdEUTHYEwlowdNDJCNBC6A6C8FoQe9reF+jdcJJUU2EeptO
+      J8sL9FHILYcQYmxQFBSHM6LlGPWgD0NiAXrAi97fgnIVdgADoBpQ3O0XfVqSBCCEGBMUQInN
+      Qo9gu7uug5KQhzbYge7uuGqfAEAh6O67aAKQJiAhxJihJhYAOnrA+3bv5lkXYEU562+n/3Rl
+      uouVM/9TDGYMCflo/afA70I3Wi/wJqPcWa2/5y9BH0NmGL6HJAAhxJhhjM/FdvevTt/ZhgIQ
+      8gEKWtBPKOBGUVT0gA/0081EquZH0fXTxwc9AOhaiJDfDSjoWvD06wCKHkJ5+zwl9O7FMxTw
+      vv3uOjom1KgkQu0VqAn5oF5okTbDZT0haJe11IXy9gJ5b1/wdR0lrhAuMpP8mp0JLIQQV9qZ
+      wuzvXDbD0AR0uRfky4lEEoAQQoxT0gQkxhS5XxHiypEEIMYcj8cT6RCEuCbIMFAhhBinJAEI
+      IcQ4JQlACCHGKUkAQggxTkkCEEKIcUoSgBBCjFMyDFSMOXoowKsvPM3617bh8oUonDiVz3/x
+      YVLjxnYJUCFGmzwBiDHn8I6N/PCJPzNnyUruWHMzgb4WWnvchIJ+BlwuNE1H1zVcrgECwRBa
+      KMjAwADBkMbgoAufP4Cu63jcg3i8PoAzx4TOc8w70880LcSgy4XLNYimnd4aDPgZcA2i6zpu
+      txuv14PLNXhmHS6vx43b4x3mJxEisuQJQIw57a2tqGYbs+cuZPaUfO67/wEAju7cwBe+/yRP
+      P/MsCYY+Hrz7Xh76wW+YnzzAXR/7CjNnz6HySCkxqfksnJbJG2/uxGB38t+P/5zkYD13f+Ir
+      zJw5i4qjZcSm5rFoWjZb39iBMcrJfz/+BIVOE1//6pc4WF5PSDGwYPltfP/fvszRnS/x/370
+      LN966AP86Imn+dwn7ubxXz3Db/7yNAVJVr758CdInn8P//zZeyP8mxPiXPIEIMacJavvYEq6
+      na9+8dPc+6EH+d3TLxHULr5ExNxla/jO1/+RnlPVmFOm8P3vfhN9sI2yyhNvH6Ewd9mtfP+R
+      f6SzqQZTyhT+83vfIDjQzpGKE6AYWLLqDv77sZ/w9S+sY+/WFzla33v6VG8vv3rq76y9+wMs
+      u/FmMqJDbN9VgqvjBEdqO1i9ekX4fiFCXCZ5AhBjTlRiBj/77Z8oLzvAm1tf5y+//B9ikzOY
+      eJEqgfMWLyFXbcaowvS5C5k5IQqrWX13fSFFZd6i65hgbkVRYObchcwutGM2GdB1Hb/XxeHi
+      HTzx85/j9QcB8Pv8nH5blX/9wf8wd2IWALfeeD2vbXuDfLWAuIJ5zMhzhu33IcTlkicAMeYc
+      2r2dQxW1FE2bx7qPfxxnlIGuri4URYFQCI/XT3dHG8ErXDu8ZPtr7K5o46lnXuSPP/3+uTut
+      MRTlpJ356+o1a2mvKuFPL77O6ptv4iotHCjGOXkCEGNO68lyfvirb2EwGtE1jcTMIm678TpM
+      fdXYtEE+88DdxDudeK5wAsjMzkHrP8W6++4mPT39gscm5U5jwcQUdlR08m83XHdlAxHiCpF6
+      AGJM0XUd96CLjtZT1Jyox+KIZcrkSdgsJnRdp6G2ktZeL1MnF3Ls8CHypswizhyk+OBRZs5b
+      jF3xsm//IQqnzyXRYWB/SQnpBVNJdigUHzrKzLkLcag+9uw7xMQZc0lyGNhbsp+s/CmkJ8dR
+      X1NJe7+f6RNz2X+ojKmzFqB6uzhS08ziBXMxGk43KelaiF//979xqCeWX/7wXyNYxVaI85ME
+      IMYUXdev+uWgB7sb+PQnH6LTC9/9759x3fS8SIckxLAkAYgxZSwkgKBvkB079pBVNJWC7DS5
+      +xdXLUkAYkwZCwlAiLFCRgEJIcQ4JQlACCHGKWkCEkKIcUqeAISIoP7+/kiHIMYxmQgmxCjT
+      dJ1+X4jBgEb/QICAMUis1YBRlfFCYnRJE5AQo0TXdRr7/Zzo9eMLnfu1M6qQGW0mN86M2SAP
+      5uESbNxHqKU00mGMKmPBCgyJE4bfN8qxCDEuhTSdI+0e2t3BYfcHNTjZ56fbE2R6ig2HSVYP
+      CofQyZ349/8u0mGMKjU67bwJQG41hAgzXdc53uU978X/bP1+jfIOL/7QFV7ISIhhSAIQIsz6
+      fCGaBwIjPr7HG6LFNfLjhbhc0gQkRBjpuk7zQID3drR1d7TRUF3JtPmLMZqGFjJodQXIiDZL
+      x/B71NTU8MQTTxAdHc26desoKCjghRde4OTJk9x55538/ve/Z8aMGaxcuZLy8nKWLVsW6ZCv
+      apIAhAgjTYc+b+icbaFQiGP793Jg51YKp88eNgF4gjreoEaUWfoCztbe3s6nPvUppk6dCkBj
+      YyN9fX3Ex8fT0dHBHXfcQVVVFeXl5WeOEecnTUBChJn/PSN+DAYDS2+9E0d07HnPCWn6iMpc
+      jjcmk4m//vWvfO9736O2tpYDBw5w/fXXYzAYKCgoYNeuXZhMJnp6enj88cfZvHlzpEO+qskT
+      gBBhZlCBS+zTVRRQFWn+ea+MjAy+8Y1vUFpayq5du6ioqGDXrl3U1dWxaNEiHnroIXbv3k0w
+      GGTt2rXU1tZGOuSrmiQAIcJIUSDKbMATfHcEkN/no/zAXtoa6yk/WMysxcswmS3nnGcxqFgM
+      kgDea2BggD/84Q+YzWbWrVvHRz/6UVwuF3v37qWoqIjGxkYyMjJwOBz86U9/kj6Ai5CJYEKE
+      ka7rtLgCHO3wntkW8PupLS8jFAxisljInzR1SD9AVoyJSYnW03WOxRXj2/HYuJsHYL3lUUyT
+      1w67T54AhAgjRVFIcZho7PfT5zvdDmQym5k0a955z7EaFTJjzHLxF2EnncBChJmqwNQkG1bj
+      xS/oJlWhKMFKlEm+miL85AlAiDBTFAWHSWVOqp3jXV56vCHeO8BHAaLNKhMSLCTajHL3HyaK
+      IwnVWRTpMEaVYo05/z7pAxBi9IR0nR5PkE5PCLc/hD8YJNpqJtFmJMFmkIXgxKiSBCBEBLW1
+      tZGSkhLpMMQ4JU1AQowyTdfpHPDR7wnS0xsgZPGQFG3BJHf/YpTJE4AQo0TTdSpbBthb00Wn
+      y4c/qKHrOiajSqzNxJzceGZlxWGRpaDPCHXVoHVWRzqMMc2QNhM1Jn3YfZIAhBgFwZDG68fa
+      OHCy57xLPKgKFKVGs2ZGGjE20yhHeHXy7f0l/j0/i3QYY9qF5gHIM6cQYabrOjurOymu677g
+      +j6aDpUtA7x2pBVfIHTe44S4UiQBCBFm7f0+dlZ3jvj4ypZ+yk9JsXgRftIJLEQY6brOwYYe
+      gmetCKqFghzetp6etibS8icxaeEqVMO77f6aDocbepmWGTvmO4a3bNnC9u3bcblcrFq1itjY
+      WLZt20ZSUhK33HILTz/9NFOmTGHlypWUlZWxZMmSSIc8roztT5cQV7mQptPQ6T5nm67r5Eyd
+      y3V3fpz6YwcI+n1Dzuse9NPnHvtVwVatWsX3vvc91qxZw6RJk8jKyuJrX/saWVlZlJaWsnz5
+      cgYGBjh27BjZ2dmRDnfckQQgRBhpOvR7z72QG4wm7NHxHNzyPLnTF2C0WIec5wtoeK+RfoC+
+      vj76+vrIzs4mPT2dw4cPY7PZmDdvHtu3bycQCNDd3c1f/vIXtm/fHulwxxVJAEKEkQIY1XO/
+      ZqFAgJ3PP0n2pFlMWrASVR36NVTVa6cewOHDh5k6dSpGo5F9+/ZhNptZsWIFmZmZfO1rX6Og
+      oACj0cjKlStpbGyMdLjjiiQAIcJIVRWc0ecu9TzY30V3awPVB3ewf9MzBHzeIefZzUYc1rHf
+      RRcIBOjv7yc/P59gMMi2bdt4/vnnefTRR2lubqatrQ273c6kSZPYuHEjsbHnr5ImrjyZByBE
+      GOm6zr4T3bxa1npJ583IiuXuORnjflE4mQfw/sk8ACEiRFEUZmbFkeAYWvj9fOxmAwvyEsb9
+      xV+EnyQAIcLMYlS5a04GFuPFv25GVeGGSUlkxNtGITIx3o39RkYhrnKKopCVYOPB63JYf7CZ
+      Lpef4dpdo61GbpySwozMWLn7f5tiMIPZEekwxjbD+S/z0gcgxCjyBzWONvdR1TpA54CPQChE
+      YpSVguQopmfGyhpAYlRJAhAigvr7+4mJOX/FJiHCSfoAhBBinJI+ACFGkdcf5K0jjZRUt9Lc
+      6SIQDJKWEM3M/GRumJFFYox0/orRI01AQowCXdepbOzmpxsO0tYzOGwncKzDwoMrp3DDjCwM
+      w8wOFlee65fL0APuix84hllv+ndME28ddp88AQgRZrquU9HYzff/tgevP3je4/oGffz6lVI8
+      viBrFuRfM0tBXM30oBeCQ2diX1O0868pJbcZQoSZ2xfkZxsOXPDi/45ASOO5Hcepbu4ZhcjE
+      eCcJQIgw0nWdN8oaaO0ZeTPDgMfPqyV1aNI6e1FlZWU89dRTvPyRoaZNAAAgAElEQVTyy/h8
+      Pqqqqjh8+DAAtbW1vPjii3i9Xjo7O+npkaT6XtIEJEQYhTSd/VXnrgNkUBXWzM8nzmHhVJeL
+      N8oah1zsq5p76O734Iy1j2a4Y05paSmzZs0iKSmJ/v5+Kioq8Pv9TJkyhT179pCamsq+fftw
+      uVysWLEi0uFedeQJQIgwCmkap7pd52zTNJ3NB0+y6eBJ0hKjMKhD2/r73X56B4cWihHvCoVC
+      tLS0cPz4cTweD06nkxtvvBGbzXZmie26ujq6urpQVZXdu3cTCl0bNRauFEkAQoSRrkMwqJ27
+      DSjKSGDtggJOtPYR1LQh52m6hnaBAvICVFXl3nvvpaCggNdff52urq4z+4xGI2vXrmXBggXY
+      7Xaam5vp6emhqqoqghFffSQBCBFGqqqQEHNuxS+jQaW2pYent1dQlBmP1TS0JdZuNuGwyrIQ
+      F+LxeCgtLaWlpYVQKMTg4CBvvvkmBw8epKSkhOjoaNxuN4WFhQD09PRgNEqr99nktyFEGBkN
+      KlOzndS19J3ZZjaqrJ6Ti91ipKKhC98wpR/TEqNIkvb/C3qnrGRjYyPz5s0jKioKp9PJypUr
+      sdlOT6grLCzE6XRit9tpa2ujoKAgwlFfXSQBCBFGqqJw46wcNh88eeZC7/YFWb+n5rznGFWF
+      lTOzMZsMoxXmmKQoCpmZmWRmZp7ZtmjRonOOSUpKAiA1NZXU1NRRjW8skCYgIcIsMymaDywp
+      YqTTuhZNTmfhpLSwxiQESAIQIuxUReGuxYXcvmgCZuP57+oNqsLiyel8fPU07BZp/xfhJ2sB
+      CTFKNE1nf3UrLxXX0tQ5gMcXRNd1LGYDybF2Vs/JZem0TLn4j6JAzdYLLpVwLTCkTkeNGf6J
+      UhKAEKMspOm0dLvo7vfQ3dtLTnoyGYnR0uYvRp0kACEiqKenh/j4+EiHIcYpGQUkxCjy+YPs
+      OXqCXaW1nDjVhc/nJzvNyaJpuVw/s4D4GBn6KUaPPAEIMQp0XaemqYP/fGozh6oa8b9n7L9B
+      VSnMSuJLH7qBpbMKpB7AGBco34C/5MlIhwGAZelXMOYvH3afPAEIEWa6rlPd2M5DP3yG1q7+
+      YY8JaRqV9W088sQGvvGJm1lz3VQUqQcwZunePrTu2kiHAYDuGzjvPrnNECLMPL4A//bLjee9
+      +J+tz+Xhx3/bRnVj+yhEJsY7SQBChJGu62wuruBoXcuIz2np7Ofp1w9IPYAIcrlc7N27l5KS
+      ErxeLz6fj8rKSgYHBwkGgxw+fJjGxkY0TaOtrS3S4V42aQISIoxCIY3XiyuHbFdVhc/etYSa
+      pk627Bu6f9+xerr7BnHGRY1GmOI92tra6OzspKuri4GBAUwmExUVFSxfvhyTyURxcTGKorB2
+      7VqqqqpISUmJdMiXRRKAEGEUDGnUNHUM2T6jIB2zyUh8tG3Y87r6BmnvcUkCiJC8vDz8fj/9
+      /f0kJiYyc+ZM7HY7iqKgaRp2ux232015eTkJCQl0dXWRmJgY6bAvmTQBCRFGmq7j9vrP2WYy
+      GlgwNZfioyc5XytPIBgiELx4DWERHrqu09FxOnFr76nXkJOTQ35+PgUFBXi9Xnbv3s2LL74Y
+      iTDfN0kAQoSRQVVJjD33Lr4gw0lRdjK3LZnK4ul5xDisQ86zW804bJbRClO8R3V1NdHR0SQn
+      J1NXV0dLSwv19fWcPHkSn8/HzJkzCQQCZGZmkpGRMWZHbEkTkBBhZDKqzCrKOGdUT2V9G199
+      /AUKs5KYkJVM/6B3yHmZSXGkO2NHM1RxltjYWI4ePYrFYmHVqlUcO3YMt9uNz+ejt7eX2NhY
+      5s6dS1xcHKdOnRqz9YZlIpgQYVZa3cS67/yRUGho6cfhqIrCv3x0NQ/euiDMkYlw8R/8E77t
+      P4x0GABYb3kU0+S1w+6TJiAhwmx6QTr33ThnxMcvmJrD2qXTwxiREKdJAhAizFRV5asP3shN
+      CyejqudvK1YUmFmYwbc/vYa4qOFHBwlxJUkTkBCjJBTS+L9th3hyw25auwfOjC5RFYUYh5V7
+      b5zDx9Yukov/NSDUdoxQ475IhwGAIW8ZhsThayFLAhBilAVDGuV1LdS3dtPT08vE/CymT0jH
+      bjVHOjQxzkgCECKC+vv7iYmJiXQYYpySBCCEEOOUdAILIcQ4JQlACCHGKUkAQggxTkkCEEKI
+      cUoSgBBCjFOyGJwYU3RdJxQKXfxAIcRFSQIQY47f77/4QUKIi5ImICGEGKckAQghxDglCUAI
+      IcYpSQBCCDFOSQIQQohxShKAGLO8bhcN9fV0dvdx9pqGoYCXF//2FN/61rcoq22JYIRCXN0k
+      AYgxR9d19m5dz7oPf4gH163j/vs/xKM/fQpv8HSBlb2b/87//vZvqCYrqgJ/f/LHfO6r/44m
+      694KcQ6ZByDGnL6WKr73nz9h5oq7+Z+PfZCqA2/w6E9+S1Z+ITfPymDbzr04nGksmj8Hf18L
+      peXVnGr0sGnTa+RNnM6kvAx6O05xsPQYsUkZzJw2CaNB5ciB3QQsiSTZoaK2kVnzFpIcHx3p
+      H1eIsJEEIMac/bvfwqXZ+dLDnyc92kx2xgPs2Po6b775JpOsU9h5oAJfQOcXv/gFCxfOp7is
+      Cl9Q4xe/+AV3ffxhooPtfOnLX8eHCZ/XzW0PfIH/98kPsPHZ37OjvB2zqjPocpE9Yzm/fuzb
+      GM5fxleIMU0SgBhzent6UKKdpES/XUJRUUlOdlJxso9Zqz7Ap09U8dz+Hp791Q8ByI6Gl8r6
+      +duv/wtVgV89+i/E5s3lv777NQ5v+zs/+uNzfPIjdwNQNGcZ//mNh3n1T4/z5zdPEtKRBCCu
+      WZIAxJiTnJKC3reVk52DFDgd6HqQk/VNOFPmYRjB+V1d3Zw4UsMDH7oXAMXsoGfAC4A9Kgab
+      2YTVYgnjTyDE1UESgBhz5i+9keRf/Zkf/vsP+Oj9d1B1YDsl1R189WM3M9zNusVipqf1JG/u
+      3E1hYRH5+XnENQT4/Gc/TrzDQkNDPYnRtlH/OYSINBkFJMYcW3wmP/zhf2AebOIb//rPbHjz
+      EJ/+x6+zZsn0YY9ffvNaMqJ1vvONr7P9QCV3PvBp5hc6+dEPvsvXv/lt3io5igwQEuORFIUX
+      Y4qu63g8njN/1nUdRVEABUXhnO2q+s79jY6uc+ZYRVHOHAO8u03T0BUF9az9iqKeeV0hrjWS
+      AMSYcnYCEEK8P9IEJIQQ45QkACGEGKckAQghxDglw0DFmGMwjGS0vxDiYqQTWAghxilpAhIi
+      gmREk4gkSQBCRIA/qNHr9tPc0YvHH0IexEUkSBOQEKNE13XaB3wcbujlZOfg2xd+sJhUMuJs
+      zMiOIzvBhkGV+7J3aH1NaH1NkQ5jTFMTJ6A6nMPukwQgxCgIaTr7T3Szo6oTly847DEWo8rs
+      nHiWTXRiN8v4DADf3l/i3/OzSIcxpllveRTT5LXD7pNPmRBhpus6e2u72FredsGqZL6gRnFt
+      Fx5/iDUzU7EYZbSTCC951hQijHRdp6nHwxsV7SMqSakDR5p6OdzQK/0CIuwkAQgRRpoOO6s6
+      CV5CQWJNh/0nes7bVCTElSIJQIgw8vhD1HW4ztkWCgUpfXMDW//8v9Qc3IGmaUPO63L5ae31
+      jlaYYdXd3c1Pf/pTuru70XWdgwcP8sc//pHu7m5+/OMfs2XLFtxuN/v37490qOOOJAAhwqhr
+      0EcgdO7df8jvIzEth1kr72T/5ufwe91DztPeHjE01mmaxo4dO/B4PHg8HgYGBti3bx8DAwPU
+      19ezcOFCWltbqaioID4+PtLhjjuSAIQII19g6N292eYgMSOP/a89S/ak2Zgs1mHP9QZC4Q4v
+      7E6cOIHdbic/Px9d1ykpKWH+/Pk4HA6cTiebNm3C5XLR3t7Ohg0bKCkpiXTI44qMAhIijByW
+      oV+xgN/Lxie+w+TrVjNl8U2o51nbaLhzx5pnnnmGrq4uGhoaqK+vp6qqipiYGGpqapg/fz7f
+      +ta32Lt3L/39/SxZsoTjx48zf/78SIc9boz9T5gQV7HEKDM2kwHPWXfz3S2NdDafoLWuEs9A
+      L7NW3j3kKcBoUEiNHf7JYCx55JFHAFi/fj3z588nPT2dgYEB1q9fz9SpU2lqOj3Jq7CwkN/8
+      5jfMnj07kuGOOzIRTIgw0nSdjYdPcbC+95LOy4y38eB1OVhN43sugEwEe/8uNBFM+gCECCNV
+      UVhalITVNPKvmlFVWFLoHPcXfxF+kgCECLM4u4lPLs0nOdpy0WNjbEY+OC+TSWnRoxCZGO8k
+      AQgRZoqikBRt5iOLs5mTE0fUMJ27VpPKxNRo7luQxaS0aBRFiUCkYryRPgAhRpGu63QM+Gju
+      8dAz6Mft9ZEcF0V6nJXUWCtGg9yTnU3rOYnWfSLSYYxpavIU1OiUYfdJAhAigrq7u0lISIh0
+      GGKcktsNISLIZDJFOgQxjkkCECICgiENjz9IZ08fgaAmK3+KiJAmICFGia7rDHoDlFS1cqi2
+      jc5+D5qmExdlZWp2Iosmp5MYY0OVDuBxQQ8F0H39YX8fxRyFYhx+BJokACFGga7rlJ3o4MlN
+      ZTR1uoY9Jj7Kyn3LJrJyZjYmKQZzzQudOoT7mXVhfx+pCCZEBOm6zr7jLTz2/H4CoaGLw72j
+      x+Xlt6+V0T3g5b5lE6U2sAg7+YQJEUa6rtPaM8hPNxy84MX/HSFN58U91RRXtki/gAg7SQBC
+      hJGmw//trMJ9CdW9AkGNF/dUM+gNhDEyISQBCBFWHn+A4sqWc7bFOix8+IbJfG7NTO6+rhBV
+      HdrpW9/ez8m2vtEKU1wGXdcpLy9ny5YtZ7Z5vV7+/Oc/EwgEeOmll9i4cSOhUIiqqiq83quv
+      wpskACHC6FSnC7fv3Dv5vkEfT2+vYFd5MxnOKAzDjPoJBDVOtoV/hIi4fIODgzQ2NtLT03Nm
+      28aNGzl27BgdHR14vV58Ph/Hjx+npaUFs9kcwWiHJwlAiDDq9/iH3T6vMJUVM7I53thD6DwF
+      4/vcY78k5LUsKiqKFStWYHi7oE9LSwsGg4Hc3Fzsdju1tbXU1NRQX19Pe3s7u3fvHrb+cyRJ
+      AhAijKKsQ2f62i0mKhu7efatSmYVJGM1Dz/kM8p69d0xiuFpmsYvfvEL6uvr2bFjB6WlpXzh
+      C1/glltuwWAwYDQaaWpqOudp4Wogw0CFCKO0hCisJsM59X3NRpUVM7OxmAxsLK7FM0wHsVFV
+      yE6SJaGvZv39/fz9739n//79qKrKww8/jM/nw+/3M3nyZCwWCw0NDcyZM4dnnnkGk8l01TUD
+      yUQwIcIoGNJ47Pn97K08dUnn5STH8O2PXEdc1NgvC3mtCgQCNDc3o+s6ZrOZjIwMAAYGBnA4
+      HAB4PB7sdjsdHR0YjUbi4+PPLPUtE8GEuMYZVIUPLCnkUG0bvrOeAi7EqCrcMi+PWMfFC8iI
+      yDGZTOTm5g7ZHh397pPbO4kgOTl5tMK6JNIHIEQYKYpCfloc626cgmGY4Z7vpSqwclYOy6dn
+      SVEYEXbyBCBEmKmKws1z8zAZDTy7vZKugeHHg0dZTdw8N4+7rivEapavpgg/+ZQJMQoMqsqq
+      WTlMzXay/UgjR052MOD24w8EiXVYKcqMZ+m0LArS4qQq2HhhicaQtTDsb6M4nOffJ53AQow+
+      XyDIoDfA4KCbxPgYbGajNPmIUSdPAEJEgMVkxGIyEvK6sFukKpiIDHnWFCKCVFnyWUSQPAEI
+      MYp0Xaerb5ATp7poau/BNegmLyOF/AwnyQlRGA1SCEaMHkkAQowCXddxuX08s+UAL7xZRn1r
+      F2f3vqUkRLN6wSTWrVlARlKc9AeIcwRqthA8/tplnWua9QDGjDnD7pNOYCHCTNd1Ontd/PPP
+      XmTfsfoLHjshM4nvfPY2ZhVmSBIQZ/iKf4V/908v69wLzQSWBkghwqyrf5Cv/OT5i178AWqa
+      Onjk5+s5UntpS0cIcTkkAQgRRpqm8YeNxRw83jjicxraevjps9txe4dfSlqIK0USgBBh5PYF
+      eHnX0SHbo+1WHv3inXzu7utRh2nqKa1uorqhfTRCFBEQCATYu3cvb7zxBm63m9raWnbu3Ekw
+      GKSjowOPxzMqcUgCECKMmtp6aOseGLJ95bwievrdJMTaGa6pf9Djp7K+bRQiFJFQWlpKXV0d
+      fX19vPrqq+zYsYPm5maOHj3Kvn37Rm14sCQAIcKovcc1ZJvNYmLe5GxKq5rhAkMw2nuGJg5x
+      bbDb7ei6TigUIiEhAQCfz0dDQwNWq5XKykpGY3yOJAAhwsg2zCzfnNQErBYTK+cVMSU/jfgY
+      x4jPFdcGTdPOFIfRNI1Vq1aRm5uLxWKhtraW4uJiWltbwx6HJAAhwigrJR6T8dzJXZX1bXzt
+      8Rf406v72FpynO6+wSHnqapCblriaIUpRll3dze6rmO1Wuns7CQtLQ2AwsJCDAYDZrN5VJ4A
+      ZCKYEGGUEONgzsQsio+dHLLvSO2p8w73zEiKY3JeapijE5GyaNEiSkpK8Hq9LFu2DIAJEyaQ
+      lpZGMBiku7v7TFIIJ0kAQoSRyajy8bWLOFDZQDCkjegcVVG4Y+l00p2xYY5ORIrZbGbJkiXn
+      bEtPTwegqKho1OKQJiAhwkhRFJbMzOfDN80bdrjnkOOB62bm8+Gb58lMYBF28gQgRJgZVJUv
+      P7ASVVV4dstBPL7AsMeZjAZumFPIv37sJuKj7aMcpRiPJAEIMQosJiNfe3AVy2cX8pdNJRw6
+      3ojPH0TTNcxGI0U5KdyzcjarFkzEapbRP+JcismGYku4vJONlvO/riwGJ8To63N5aOsewO32
+      kJmaSEKsY0RNREJcSZIAhIigU6dOnen8E2K0SQIQQohxSkYBCSHEOCUJQAghxilJAEIIMU5J
+      AhBCiHFKEoAQQoxTkgCEEGKckpnAYkzRdR2v1xvpMIS4JkgCEGOOTF0R4sqQJiAhhBinJAEI
+      IcQ4JQlACCHGKUkAQggxTkkCEEKIcUoSgBhzdF3n8N43+MF3v83XH/kmT/7xb/QO+sPyXl2n
+      TvDMcy8w4D1dxcvVXs3a1at5dktJWN5PiNEkCUCMOdX7t/KVR76PBwuJcVHs3Lyemtb+sLxX
+      e30FP//l7+h1n04A1phU/vWb32Tx9IKwvJ8Qo0nmAYgxp6aqEt2WwKc/9zlyUhLQggE0xYiu
+      BVn/9O95bsNmgqqVtR/8CA984Baay3bwpW/9hOuXLmDfnmKyJs9ldm4cr25+g+jUCXz/B98h
+      0a7y3B9+zfOvbMMc7eQzX/wyM1J0HvnB4xDw8NDH7qdw7g38x1fu44nHHuMz3/4fnHRy/2e/
+      xoLrrufYwWKikvO5cdEUXnnlNXRrAt/+/g/IT43lzZef4/d/ex6vZubedZ/mnluX0VJ3jB/9
+      +HFqG9tISE7nC//0CPMmZUX6VyvGGXkCEGPOgqU3kmL28Ol1D/DQw//E1r1lGAwKR3a9xuNP
+      Psf1N9/NbTfM46mf/xfbD1YTCvjp6enGlpDJ2tXXc+CtTTS6TNx95y3UlO6mtKqJQ2++xK+f
+      2cSd93+UuYXJ/Od//BchRzJ3rVkJBisPfPzT3Lt2FboeorenB38gCFqQnp4edFMMH7zzVmqO
+      7OVgTQcf/OBddDZWsKvkGG21h/iPx37Nwhvv5PaV8/jFY49S2+5iw7N/pL47yL333c/KJXPR
+      tVCkf61iHJIEIMYcZ/ZknvzDH/nqw58lzujlP/7tn3l9XyVHyg6RNGE2n/34A6z79OeZnB7L
+      ocNlb59l4gMfup+bV16PAVhz173cevMqrAYIhTTKDpditTtoqqvC5Q0y2FFL04CJBbOngWpm
+      6YpVXDdvxrDx3HznPdx+yyrMRpVlN93OHWtuJdpmRtM0Ko6W4TdYGehooqV7AGNwkKMVtUyf
+      NYfBjnp+//vf82bxURw266j9/oR4hzQBiTGnpuIIUclZ3LT2A9y4aiXr7r2H2rqTZERF4+o+
+      Qe+gF1uwl+4BNzOiY0b0mjablZCmk5mTh800gfyJ/7+9e3+OqkwTOP49fb8m6UvIpRNDEgiE
+      hIREQA06gRJ2cLAqjnerFF2dcXeLsaitrfKH3a1ay1/0D3Bmx9q1SmtLtkR3pKgRZVDj4Cbq
+      ACIs4ZKQAArkRtLpJH2/vPsDu2MizbKK3SeX5/NT6rynU091nT7PeS/nfRrwOkxMaxpkUkTj
+      CZSyf+9Y7TY7ZNL4yirwu+1UVdVQG/BR4m7n9Tfu5PxAH6/99hXe/v0B/um5J773/xfiZkgC
+      EPPOV59+wG92H6AiUE48HCKkedh05zpKTcv593f/wDNPbseUiZEwL+Geu9tInfv8hv+zfcs9
+      7Nr7Mbt3v43H7eDKyBBrNz9EaaAKlzHG8796lnXtP+Nvn9z0vWJtvr2dpd5d7Hl7N0v8HkLj
+      V3i26lY++rff8MeeQQrddi4PhdhYs/QHfhtC/HDGF1544QW9gxDi+6ipX03zqhV4fcWsWdfG
+      c8/toLrMi93tZfPdm/AWFdDQchu/em4H5V4XmsFIgbeEpqYGrCYj7kIfq5ubcNnMOFwFrG5q
+      prKqhi13b8RbVMjS2jruf/Rx6peW4Sxawh3rW/B6/axqXM3SyjLsjgJWNzdTVODE7iqiubkJ
+      t82MzVVI0+omvAUOLHYHDQ2rCQQCbPmLLZQWewlULuWn997PHa31NLWupbK8hJKySjoefpyt
+      7eswaJreX61YZDQlWyuKeUQpRTQa1TsMIRYEmQQWQohFShKAEEIsUpIAhBBikZIEIIQQi5RM
+      Aot5RS5XIX488h6AmFc0WSopxI9GhoCE0NHw8LDeIYhFTHoAQuSZUopkWpFIpcFkI5ZMYzUZ
+      pHcj8k4SgBB5opRiKpaid3iKC1ciTEaTxOIJvG47Aa+dFaUF+JwWDAZJBLmgkjEibz2udxh5
+      Z92wE1P1XVnbJAEIkQdKKb4Zj/LJ6RG+GY+QTH87mT08PUXv8DQ9lybZsMzPijI3ZqOMzv7o
+      VIbM6Gm9o8g7FQtdt00SgBA5ppRiKBTjvWODDE/Gsp6TzigGJ2Ic6Lk6J7CqvEB6AiLn5DFD
+      iBxLpDJ82nvlujf/mULRJJ/1jzGeoxrHQswkCUCIHFJKMRiK0T8yPetY6MoQgwOniExNXPNu
+      w3AoxtmRaXnnIYvR0VGOHj3K6Ogo6XSavr4+enp6iMfjDA8Pc+bMGVKpFFNTU8Tjcb3DnfNk
+      CEiIHFLAxfEI8VTmz8fi0TAnDr6Hxe7k6Ie/Y8uTf4fZ+m1FsFRGcSkYJZHKYDUbdYh6bkok
+      Euzbtw+Hw0F3dzetra0cP34co9HIuXPnGBoaIpVKkUwmuXTpEm1tbVitVr3DntOkByBEDikF
+      oWhq1jGrzcEdHU/hKQkQi0yhVOaaz03HU6Qy0gOYyWw2s337dtrb2yktLUXTNMrKyqitrcVi
+      sWC1WikvL2dgYACn00koFJJe1A1IAhAihzTA8N1fmQb/dfA9err/QPvDf4PZem2pSSkOcy1N
+      0+jr66Orq4vNmzfj8/kYGxujr68Ph8PB+vXrAbBYLBw7dox33nmHy5cv6xz13CYJQIgc0jTw
+      u2YPQ0yOjfCnfbu4bdvj2Jzuq92E7yhymLGY5Oc5UywWo7Ozk5aWFuLxOP39/dxyyy20tLRw
+      7tw56urqKCkpoaKigsLCQmpra6V40A3IFSZEjt3ideC2fTvdZjSZad3yIBfPfMX5nkOk098Z
+      IjIZWOpzYJJloLNkMhnsdjvvv/8+nZ2d3H777UxPT9Pb28u2bdtIp9P4/X5WrVpFfX09RqOR
+      6upqvcOe02Q3UCFyLJ1RfHxqhO6zV7I97M+iASvL3GxbU47LKms0fkwqEWH61+v1DiPvbFtf
+      xlx/b9Y2ucKEyDGDBm3LfCRSGU5cDBFNprOeZzZqLFviZmN9MU6LrP4RuScJQIgc0zQNh8XI
+      loYSqnwOvvp6gqFQjGQ6gwLMBg2vy0JjoJCGikKcFqNsDCfyQhKAEHmgaRoWk0ZDoIDqYidj
+      0wlC0STB4AQVpT78LitOqwmjjPvnjsGAMdCqdxR5pzm812+TOQAh9DM1NYXb7dY7DLFIySog
+      IXQkyxSFniQBCKEjo1Eme4V+ZA5AiDxTSpHOKFLpDEozkkylMRmlIpjIP0kAQuSJUopYIk3f
+      5SCnvhljOBgmHI5QUeKlLuBhRaWPQodFEsEMyf6PSfV9qHcY85ql6WGM5WuytkkCECIPlFIM
+      BcP8rquPP50ZZCr67X7/h/rHsFlMNFb5+fmG5dQFPBiv2UBoccqM9pI6tVfvMOY1U1WbJAAh
+      9KKUYjQU4bfvHePEhdGsbwPHEikO9w0xMhHhF/espuEWv/QERM7JY4YQOZZMZ3i3+ywnzme/
+      +c/09egk//GfvYxP3bh6mBA3SxKAEDmklOLrkUm6T11i5r3faNAwGjSyPeOf/maco/0jC2Iv
+      +0wmQyKRIJlMopQimUwSj8dJJBJkMhmSySTpdPrqxHg6+xYZIndkCEiIHFLq6g19KvLtmH+R
+      08pP11bjtlsITsfY091Hekbxl3gyzalvxrizIYDNMr9/ol9++SX79u0jEonQ0dHByZMnuXz5
+      MhcuXODBBx+ks7OTmpoaHnjgAQ4fPszWrVv1DnlRmd9XlxBznEIxFJyedWwiHOetP55m9dJi
+      frK6AoOmkWb20/7YZJR4Mj3vE8DatWtpaWlh//79GI1GnnnmGSYmJjhw4ADFxcV0dHTQ39/P
+      8ePH2bBhg97hLjoyBCREjmUbyVlXV8rGpkp6LwVnPf0vNIlEgldffZW+vj7KysoAOHHiBPX1
+      9axcuZKenh4KCgqYmprixRdfZNeuXTpHvLhIAhAihzQ0SjzOWcecNjNnLo7z1sHTtNQuwZZl
+      62ev27YgCsKPjo7y1FNPsWnTJg4dOkQ4HGZwcJC6ujqcTidPPPEENpsNj8fDQw89RCZzbX1k
+      kTvzu38pxBynabCywovLbmY6mgTAZDSwqakSq9nEu119RIABFnkAAAUZSURBVOKzK4JZzEZW
+      VvoWRAIIBoO8/vrruFwuHnvsMSYmJlizZg0WiwWAUChEXV0dHo+HN954g7vuukvniBcXSQBC
+      5JCmaVSVFHLbinI++uoCAKFwnD2fnb3uZ+oCHlpqlyyI9wAaGxtpbGy8bntJScmf/965c2c+
+      QhIzyBCQEDlmMRm4f8Ny6it9WZd9zhTwubh/Qx2+AnteYhOLmyQAIXJM0zRKPU7+elszdzVW
+      4LKZrznHajaypmYJv7ynmcYqP4YF8PQv5j4ZAhIiDzRNo8Lv5hdbmzh9cZyTX48xEgwTi8cp
+      9RVSF/DQUOXH47bJzV/kjVQEEyLPlLq6FXQynWF8PEix34fFJNtBZ5MJX0GFR/UOY14zFJSj
+      2QqztkkPQIg80zQNs8mI2WQkbNIWxGqfXDE4/eD06x3GgiVzAELoyGaz6R2CWMQkAQiho1hM
+      dv0U+pEhICHyKKMUU+EYF0cmGB6fZHo6TGV5jMoSDx6XA6NRnsnmivT4ACSjeodx0wwFATR7
+      UdY2mQQWIg+UUsSTaT47PsC7nxzj5PlBpiNXt0R22C1Ul/nZdmcDm9etoNBllwnhOSC861Ey
+      wyf0DuOm2ba+jLn+3qxt0gMQIseUUsQTKd7cf5jXf/8Z45ORWe3hWILR4DQ95y5z6vwQf/Xz
+      OykuckkSEDknCUCIHEunM/zr3m7+ZU8XqfT1NzsLRxPs/vBLQlNR/uEvt+IpcOQxSrEYyYCj
+      EDmklOL84Dh7Pjk26+Zv0DR+0rKMpmWBWdtDZDKKruMDfNFzfkFUBBNzm/QAhMghpeBo70WG
+      xidnHV9VXcpDd7cyNBaiZ+DyrJoAk+EYh05eYOOty7FZrt02QtxYJpPh4MGDdHZ2Yrfbefrp
+      p3nzzTcZGxujtbUVv9/PBx98wCOPPILZbMZsNrN8+XK9w847SQBC5FBGKQYuzS4GrwFb2xro
+      OtZPdbkv6+cujkwQjSclAfxAmqbR0NBAW1sb+/fvJxqN8uyzzxKJRNi9ezeRSIQdO3bQ1dVF
+      UVER7e3teoesCxkCEiKnFInk7GLn1eU+llcW4y10UuorwG6zXPOpZCqNWsCVwnJN0zQKCwvp
+      7u7G7XYTCAQ4cuQIr7zyCk1NTTQ3N/Paa69hs9kIBoO89NJLDAwM6B123kkCECKHNE2jxFcw
+      69iVUJhfv32Q0HSUZCpNJsuN3lfoxDLP6wHrSSnF559/js/no729nVQqRXNzM88//zxffPEF
+      jY2N7Ny5k4KCAhKJBPfddx8XLlzQO+y8kytMiBwyaBpNywI4bRbCsQRwdYz/+NlLnB8c49Oj
+      Z4n8z/H/ZTYZaagpw2GV4Z8fKplMcuTIEcbGxtizZw8dHR0cOHCAUCjE+vXrATh9+jTNzc2Y
+      TCb27t3L9u3bdY46/+RFMCFybCoc4+//eS8fH+79f52/qrqUl3d0UFtRnOPIxP9lMbwIJkNA
+      QuSYy2Hll/dtoCaQfcJ3piUeF9t/dhtVZTc+V4ibJQlAiBzTNI3GmnL+8el7uHXl1WLw32Uy
+      GlheWczORzex5baVmGRPIJEHMgcgRB4YDBrrV1VRueM+Pjp0mkOnvmZ4fIpkMkWxx03TsnI2
+      r19JbUWx3PxF3sgcgBB5ppQiHEsQjsYZGRmlqrIcl92KwSA3/rkkde4gKhrUO4ybZgzciqGw
+      ImubJAAhdBQMBvF4PHqHIRYpeeQQQkdmsyz1FPqRHoAQQixS0gMQQohFShKAEEIsUv8NzWl9
+      o0J9ryUAAAAASUVORK5CYII=
+    </thumbnail>
+  </thumbnails>
+</workbook>
