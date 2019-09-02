@@ -1056,9 +1056,9 @@
         </zone>
         <zone h='20000' id='18' name='Summary' show-title='false' w='25000' x='49667' y='79600' />
         <zone alt-text='Young people prefer Summer' forceUpdate='true' h='28000' id='27' is-centered='0' param='C:/Users/csaavedra/MIC/Performance - Documents/Challenges/MakeOverMonday/2019/2019W36-090219/Young1.png' type='bitmap' url='#Young people prefer Summer' w='11000' x='3417' y='55867' />
-        <zone alt-text='Adults prefer Fall' h='26400' id='28' is-centered='0' param='C:/Users/csaavedra/MIC/Performance - Documents/Challenges/MakeOverMonday/2019/2019W36-090219/Adult1.png' type='bitmap' url='Adults prefer Fall' w='14500' x='35000' y='58667' />
+        <zone alt-text='Adults prefer Fall' h='26400' id='28' is-centered='0' param='C:/Users/csaavedra/MIC/Performance - Documents/Challenges/MakeOverMonday/2019/2019W36-090219/Adult1.png' type='bitmap' url='#Adults prefer Fall' w='14500' x='35000' y='58667' />
         <zone alt-text='Young people prefer Winter' h='27600' id='33' is-centered='0' param='C:/Users/csaavedra/MIC/Performance - Documents/Challenges/MakeOverMonday/2019/2019W36-090219/Young2.png' type='bitmap' url='Young people prefer Winter' w='5667' x='61750' y='48267' />
-        <zone alt-text='Senior people prefer Spring' h='27200' id='34' is-centered='0' param='C:/Users/csaavedra/MIC/Performance - Documents/Challenges/MakeOverMonday/2019/2019W36-090219/Senior1.png' type='bitmap' url='Senior people prefer Spring' w='7083' x='82750' y='58533' />
+        <zone alt-text='Senior people prefer Spring' h='27200' id='34' is-centered='0' param='C:/Users/csaavedra/MIC/Performance - Documents/Challenges/MakeOverMonday/2019/2019W36-090219/Senior1.png' type='bitmap' url='#Senior people prefer Spring' w='7083' x='82750' y='58533' />
         <zone forceUpdate='true' h='8533' id='43' type='text' w='19917' x='78250' y='92000'>
           <formatted-text>
             <run bold='true' fontcolor='#d4d4d4'>Æ                     </run>
@@ -1325,7 +1325,7 @@
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='27' />
+      <active id='3' />
       <simple-id uuid='{7E5E916F-69F7-465B-B62F-EB021C793936}' />
     </window>
     <window class='dashboard' name='Original'>
